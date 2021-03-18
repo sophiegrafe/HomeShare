@@ -84,3 +84,5 @@ C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.csproj.Core
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.csproj.CopyComplete
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.dll
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.pdb
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Models.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Models.pdb
