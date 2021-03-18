@@ -1,0 +1,10 @@
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\bin\Debug\HomeShare.DB.dacpac
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\bin\Debug\HomeShare.DB.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\bin\Debug\HomeShare.DB.pdb
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\HomeShare.DB.sqlprojAssemblyReference.cache
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\Model.xml
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\refactor.xml
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\postdeploy.sql
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\predeploy.sql
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\HomeShare.DB.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare.DB\obj\Debug\HomeShare.DB.pdb
