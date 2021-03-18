@@ -17,5 +17,20 @@ namespace HomeShare
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_End()
+        {
+
+        }
+
+        protected void Session_Start()
+        {
+
+        }
+
+        protected void Session_End()
+        {
+
+        }
     }
 }
