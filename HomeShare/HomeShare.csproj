@@ -211,8 +211,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Agents.cshtml" />
-    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\Owners.cshtml" />
+    <Content Include="Views\Home\Echanges.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeShare.Models\HomeShare.Models.csproj">
+      <Project>{3e854267-10f5-49df-9324-0a058cec680c}</Project>
+      <Name>HomeShare.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
