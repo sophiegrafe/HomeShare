@@ -4,23 +4,22 @@
 <head>
     <title>HomeShare</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @*<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
     <!-- Owl stylesheet -->
-    @*<link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">*@
-    KC
+    
     <!-- Owl stylesheet -->
-    <!-- slitslider -->    
+    <!-- slitslider -->
     @*<script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
-    <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>*@
+        <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>*@
     <!-- slitslider -->
 
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/owlCarousel")
+    @Styles.Render("~/Content/slitSlider")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("TemplateCss", required: false)
     @RenderSection("TemplateScript", required: false)
     @RenderSection("Scripts", required: false)
 </head>
@@ -84,7 +83,7 @@
                 <div class="col-lg-3 col-sm-3">
                     <h4>Information</h4>
                     <ul class="row">
-                        <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/About>A propos de nous</a></li>
+                        <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/About">A propos de nous</a></li>
                         <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Owner">Nos propriétaires</a></li>
                         <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Echanges">Bien à échanger</a></li>
                         <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Contact">Contact</a></li>
@@ -129,28 +128,29 @@
             <div class="modal-content">
                 <div class="row">
                     <div class="col-sm-6 login">
-                        <h4>Login</h4>
+                        <h4>Déjà des nôtres</h4>
+                        
                         <form class="" role="form">
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Votre Email">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                <label class="sr-only" for="exampleInputPassword2">Mot de passe</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Mot de passe">
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember me
+                                    <input type="checkbox"> Se rappeller de moi
                                 </label>
-                            </div>
-                            <button type="submit" class="btn btn-success">Sign in</button>
+                            </div>                            
+                            <button type="submit" class="btn btn-success">Se connecter</button>
                         </form>
                     </div>
                     <div class="col-sm-6">
-                        <h4>New User Sign Up</h4>
-                        <p>Join today and get updated with all the properties deal happening around.</p>
-                        <a role="button" class="btn btn-info" href="/Account/Register">Join Now</a>
+                        <h4>Nouveau parmis nous</h4>
+                        <p>Rejoingnez-nous pour avoir accès à toutes nos offres de biens à échanger !</p>
+                        <a role="button" class="btn btn-info" href="/Account/Register">S'inscrire</a>
                     </div>
 
                 </div>
@@ -158,9 +158,6 @@
         </div>
     </div>
     <!-- /.modal -->
-
-
-
 </body>
 </html>
 
