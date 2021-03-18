@@ -86,3 +86,9 @@ C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.dll
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\obj\Debug\HomeShare.pdb
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Models.dll
 C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Models.pdb
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Repositories.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Repositories.pdb
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.DAL.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Entities.dll
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.DAL.pdb
+C:\Users\Sophie\source\repos\HomeShare\HomeShare\bin\HomeShare.Entities.pdb

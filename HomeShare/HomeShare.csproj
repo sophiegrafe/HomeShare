@@ -222,6 +222,7 @@
     <Folder Include="Areas\Membre\Controllers\" />
     <Folder Include="Areas\Membre\Data\" />
     <Folder Include="Areas\Membre\Views\Shared\" />
+    <Folder Include="infra\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +232,10 @@
     <ProjectReference Include="..\HomeShare.Models\HomeShare.Models.csproj">
       <Project>{3e854267-10f5-49df-9324-0a058cec680c}</Project>
       <Name>HomeShare.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeShare.Repositories\HomeShare.Repositories.csproj">
+      <Project>{362178f0-0637-41b6-b226-d3f8a68e2908}</Project>
+      <Name>HomeShare.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

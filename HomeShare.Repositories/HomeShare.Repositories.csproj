@@ -41,8 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MembreRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeShare.DAL\HomeShare.DAL.csproj">
+      <Project>{766b2999-187a-4cf1-b297-56656e8013b4}</Project>
+      <Name>HomeShare.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeShare.Entities\HomeShare.Entities.csproj">
+      <Project>{63917f59-7b9d-46f2-9609-3ad969d726de}</Project>
+      <Name>HomeShare.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeShare.Models\HomeShare.Models.csproj">
+      <Project>{3e854267-10f5-49df-9324-0a058cec680c}</Project>
+      <Name>HomeShare.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
