@@ -19,12 +19,12 @@ namespace HomeShare.Controllers
             return View();
         }
 
-        public ActionResult Agents()
+        public ActionResult Owners()
         {
 
             return View();
         }
-        public ActionResult Blog()
+        public ActionResult Echanges()
         {
 
             return View();
