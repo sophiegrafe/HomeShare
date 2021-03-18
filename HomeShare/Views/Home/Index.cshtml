@@ -2,7 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <div class="">
     <div id="slider" class="sl-slider-wrapper">
         <div class="sl-slider">
@@ -217,15 +216,12 @@
         </div>
     </div>
 </div>
+
 @section TemplateScript
 {
     @Scripts.Render("~/bundles/slitSlider")
     @Scripts.Render("~/bundles/owlCarousel")
     @Scripts.Render("~/bundles/customScript")
-}
+    @Scripts.Render("~/bundles/jquery.ba-cond.min")
 
-@section TemplateCss
-{
-    @Styles.Render("~/Content/owlCarousel")
-    @Styles.Render("~/Content/slitSlider")
 }
