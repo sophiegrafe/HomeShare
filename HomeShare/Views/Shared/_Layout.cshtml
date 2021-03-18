@@ -51,6 +51,10 @@
                         <li><a href="~/Home/Owners">Les Propriétaires</a></li>
                         <li><a href="~/Home/Echanges">Les Biens en Echange</a></li>
                         <li><a href="~/Home/Contact">Contactez-nous</a></li>
+                        @if (HomeShare.infra.SessionUtils.IsLogged)
+                        {
+                            <li><a href="~Membre/Home/Index">Mon espace</a></li>
+                        }
                     </ul>
                 </div>
                 <!-- #Nav Ends -->
@@ -67,9 +71,25 @@
             <a href="~/Home/Index"><img src="~/images/logo.png" alt="Home Share"></a>
 
             <ul class="pull-right">
-                <li><a href="#">Echanger</a></li>
+                @if (HomeShare.infra.SessionUtils.IsLogged)
+                {
+                    <li><a href="~/Membre/Home/Index">Echanger</a></li>
+                }
+                else
+                {
+                    <li><a href="~/Home/Echanges">Echanger</a></li>
+                }
                 <li><a href="#">Visiter</a></li>
-                <li><a href="#">Se connecter</a></li>
+
+                @if (HomeShare.infra.SessionUtils.IsLogged)
+                {
+                    <li><a href="~/Account/Logout">Se déconnecter</a></li>
+                }
+                else
+                {
+                    <li><a href="~/Account/Login">Se connecter</a></li>
+                }
+                
             </ul>
         </div>
         <!-- #Header Starts -->
@@ -128,7 +148,7 @@
                     <div class="col-sm-6 login">
                         <h4>Déjà des nôtres</h4>
                         
-                        <form class="" role="form">
+                        <form action="~/Account/Login" method="post">
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputEmail2">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Votre Email">
@@ -158,50 +178,3 @@
     <!-- /.modal -->
 </body>
 </html>
-
-
-
-
-@*<!DOCTYPE html>
-    <html>
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - Mon application ASP.NET</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Nom d'application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Mon application ASP.NET</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
-    </html>*@
