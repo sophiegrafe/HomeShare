@@ -8,12 +8,7 @@ namespace HomeShare
         // Pour plus d'informations sur le regroupement, visitez https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
+            
             // Utilisez la version de développement de Modernizr pour le développement et l'apprentissage. Puis, une fois
             // prêt pour la production, utilisez l'outil de génération à l'adresse https://modernizr.com pour sélectionner uniquement les tests dont vous avez besoin.
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -45,9 +40,12 @@ namespace HomeShare
             bundles.Add(new ScriptBundle("~/bundles/owlCarousel").Include(
                         "~/js/owl.carousel.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/customScript").Include(
-                        "~/js/script.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery.ba-cond.min").Include(
+                        "~/js/jquery.ba-cond.min.js")); 
 
+            bundles.Add(new ScriptBundle("~/bundles/customScript").Include(
+                        "~/js/script.js",
+                        "~/js/modernizr.custom.79639.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
