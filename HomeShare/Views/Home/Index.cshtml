@@ -95,15 +95,18 @@
             
             @foreach (HomeShare.Models.BienModel item in Model.ListTopBien)
             {
-                <div class="properties">
-                    <div class="image-holder">
-                        <img src="~/images/properties/@item.Photo" class="img-responsive" alt="properties" />
-                        <div class="status sold">A échanger</div>
-                    </div>
-                    <h4><a href="~/Home/BienDetails">@item.Titre</a></h4>
-                    <p class="price">@item.DescCourte</p>
-                    <a class="btn btn-primary" href="~/Home/BienDetails">Voir Details</a>
+            <div class="properties">
+                <div class="image-holder">
+                    <img src="~/images/properties/@item.Photo" class="img-responsive" alt="properties" />
+                    <div class="status sold">A échanger</div>
                 </div>
+                <h4><a href="~/Home/BienDetails">@item.Titre</a></h4>
+                <p class="price">@item.DescCourte</p>
+                <form action="~/Home/BienDetails" method="post">
+                    <input type="hidden" name="IdBien" value=@item.IdBien />
+                    <input type="submit" class="btn btn-primary" value="Voir Details" />
+                </form>               
+            </div>
              }
 
         </div>
@@ -145,7 +148,10 @@
                                         <h5><a href="~/Home/BienDetails">@item.Titre</a></h5>
                                         <p class="price">@item.Ville</p>
                                         <p class="price">nombre de prs : @item.NombrePerson</p>
-                                        <a href="property-detail.php" class="more">En savoir plus</a>
+                                        <form action="~/Home/BienDetails" method="post">
+                                            <input type="hidden" name="IdProduit" value=@item.IdBien />
+                                            <input type="submit" class="btn btn-primary" value="En Savoir Plus" />
+                                        </form>
                                     </div>
                                 </div>
                             </div>

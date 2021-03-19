@@ -1,0 +1,37 @@
+﻿@model HomeShare.Models.DetailsViewModel
+@{
+    ViewBag.Title = "BienDetails";
+}
+
+<h2>BienDetails</h2>
+
+<div>
+    <h2>@Model.DetailsBien.Titre</h2>
+    <h3>@Model.DetailsBien.Ville</h3>
+    <p>@Model.DetailsBien.DescLong</p>
+    <img src="~/images/properties/@Model.DetailsBien.Photo" class="img-responsive" alt="properties" />
+
+    @if (@Model.DetailsBien.AssuranceObligatoire)
+    {
+        <p>Le paiement d'une assurance est obligatoire pour pouvoir accéder à ce bien. Le montant de l'assurance s'élève à 10 euros</p>
+    }
+
+    <h3>Adresse</h3>
+    <hr />
+    @if (HomeShare.infra.SessionUtils.IsLogged)
+    {
+        <p>@Model.DetailsBien.Numero</p>
+        <p>@Model.DetailsBien.Rue</p>
+        <p>@Model.DetailsBien.CodePostal</p>
+        <p>@Model.DetailsBien.Ville</p>
+        <p>@Model.DetailsBien.Pays</p>
+    }
+    else
+    {
+        <p>Pour pouvoir accéder à ces informations vous devez être connecté.</p>
+    }
+
+    <p>Pour pouvoir contacter le propriétaire, vous devrez vous acquitter des frais de dossier (5 euros).</p>
+    <button class="btn btn-warning">Contacter le propriétaire</button>
+    
+</div>

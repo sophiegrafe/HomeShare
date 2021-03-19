@@ -22,5 +22,17 @@ namespace HomeShare.infra
                 HttpContext.Current.Session["IsLogged"] = value;
             }
         }
+
+        public static int IdBienDetails
+        {
+            get
+            {                
+                return (int)HttpContext.Current.Session["IdBienDetails"];
+            }
+            set
+            {
+                HttpContext.Current.Session["IdBienDetails"] = value;
+            }
+        }
     }
 }

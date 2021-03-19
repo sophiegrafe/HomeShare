@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Threading.Tasks;
 
 namespace HomeShare.Repositories
@@ -67,6 +68,34 @@ namespace HomeShare.Repositories
                 }
                 ).ToList();
 
+        }
+
+        public BienModel GetBienDetails()
+        {
+
+            BienEntity bienFromDB = _bienRepo.GetOne((int)HttpContext.Current.Session["IdBienDetails"]);
+            BienModel bienForController = new BienModel();
+
+            bienForController.IdBien = bienFromDB.IdBien;
+            bienForController.IdMembre = bienFromDB.IdMembre;
+            bienForController.NombrePerson = bienFromDB.NombrePerson;
+            bienForController.Pays = bienFromDB.Pays;
+            bienForController.Titre = bienFromDB.Titre;
+            bienForController.DescCourte = bienFromDB.DescCourte;
+            bienForController.DescLong = bienFromDB.DescLong;
+            bienForController.Ville = bienFromDB.Ville;
+            bienForController.Rue = bienFromDB.Rue;
+            bienForController.Numero = bienFromDB.Numero;
+            bienForController.CodePostal = bienFromDB.CodePostal;
+            bienForController.Photo = bienFromDB.Photo;
+            bienForController.Latitude = bienFromDB.Latitude;
+            bienForController.Longitude = bienFromDB.Longitude;
+            bienForController.AssuranceObligatoire = bienFromDB.AssuranceObligatoire;
+            bienForController.IsEnabled = bienFromDB.IsEnabled;
+            bienForController.DisabledDate = bienFromDB.DisabledDate;
+            bienForController.DateCreation = bienFromDB.DateCreation;
+
+            return bienForController;
         }
 
     }
