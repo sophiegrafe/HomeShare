@@ -3,38 +3,61 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>HomeShare</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+    @RenderSection("Scripts", required: false)
+
+</head>
+
+    <body class="col w-12">
+    <div class=""></div>
+    @RenderBody()
+            
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-3">
+                        <h4>Information</h4>
+                        <ul class="row">
+                            <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/About">A propos de nous</a></li>
+                            <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Owner">Nos propriétaires</a></li>
+                            <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Echanges">Bien à échanger</a></li>
+                            <li class="col-lg-12 col-sm-12 col-xs-3"><a href="~/Home/Contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-3">
+                        <h4>Newsletter</h4>
+                        <p>Recevoir notre newsletter et soyez avertis de nos dernières nouveautés</p>
+                        <form class="form-inline" role="form">
+                            <input type="text" placeholder="Entrez votre adresse email" class="form-control">
+                            <button class="btn btn-success" type="button">Prevenez-moi !</button>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-3">
+                        <h4>Suivez-nous</h4>
+                        <a href="#"><img src="~/images/facebook.png" alt="facebook"></a>
+                        <a href="#"><img src="~/images/twitter.png" alt="twitter"></a>
+                        <a href="#"><img src="~/images/linkedin.png" alt="linkedin"></a>
+                        <a href="#"><img src="~/images/instagram.png" alt="instagram"></a>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-3">
+                        <h4>Contactez-nous</h4>
+                        <p>
+                            <b>HomeSahre Inc.</b><br>
+                            <span class="glyphicon glyphicon-map-marker"></span> 8290 Walk Street, Australia <br>
+                            <span class="glyphicon glyphicon-envelope"></span> hello@bootstrapreal.com<br>
+                            <span class="glyphicon glyphicon-earphone"></span> (123) 456-7890
+                        </p>
+                    </div>
+                </div>
+                <p class="copyright">Copyright 2013. All rights reserved.</p>
+            </div>
+        </footer>
+ </body>
 </html>
