@@ -1,15 +1,32 @@
 ﻿@model HomeShare.Models.DetailsViewModel
 @{
-    ViewBag.Title = "BienDetails";
+    ViewBag.Title = "Détail du Bien";
 }
 
-<h2>BienDetails</h2>
+<!-- banner -->
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="~/Home/Index">Home</a> /About </span>
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+<!-- banner -->
 
-<div>
-    <h2>@Model.DetailsBien.Titre</h2>
-    <h3>@Model.DetailsBien.Ville</h3>
-    <p>@Model.DetailsBien.DescLong</p>
-    <img src="~/images/properties/@Model.DetailsBien.Photo" class="img-responsive" alt="properties" />
+<div class="container">
+    <hr/>
+    <div>
+        <div class="col-sm-4">
+            <img src="~/images/properties/@Model.DetailsBien.Photo" class="img-responsive" alt="properties" />
+        </div>
+        <div class="col-sm-4">
+            <h3>@Model.DetailsBien.Titre</h3>
+            <h4>@Model.DetailsBien.NombrePerson</h4>
+            <p>@Model.DetailsBien.DescLong</p>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+    </div>
 
     @if (@Model.DetailsBien.AssuranceObligatoire)
     {
@@ -33,5 +50,5 @@
 
     <p>Pour pouvoir contacter le propriétaire, vous devrez vous acquitter des frais de dossier (5 euros).</p>
     <button class="btn btn-warning">Contacter le propriétaire</button>
-    
+
 </div>

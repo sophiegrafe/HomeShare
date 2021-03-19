@@ -38,6 +38,33 @@ namespace HomeShare.Repositories
 
 
         }
+
+
+        public MembreModel UserAuth(LoginModel lm)
+        {
+            MembreEntity me = ((MembreRepository)_membreRepo).GetFromLogin(lm.Login, lm.Password);
+            if (me == null) return null;
+            if (me != null)
+            {   
+
+                return new MembreModel()
+                {
+                    IdMembre = me.IdMembre,
+                    Nom = me.Nom,
+                    Prenom = me.Prenom,
+                    Login = me.Login,
+                    Password = me.Password,
+                    Email = me.Email,
+                    Telephone = me.Telephone,
+                    Pays = me.Pays
+
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
 
         public List<BienModel> GetAllBien()
