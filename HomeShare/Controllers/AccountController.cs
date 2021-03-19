@@ -57,7 +57,31 @@ namespace HomeShare.Controllers
 
 
         /***Recuperation du Login de l'utilisateur enregistré ***/
-
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Login(LoginModel lm)
+        //{
+        //    UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
+        //    if (ModelState.IsValid)
+        //    {
+        //        MembreModel mm = uow.UserAuth(lm);
+        //        if (mm == null)
+        //        {
+        //            ViewBag.Error = "Erreur Login/Password";
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            SessionUtils.IsLogged = true;
+        //            SessionUtils.ConnectedUser = mm;
+        //            return RedirectToAction("Index", "Home", new { area = "Membre" });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel lm)

@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace HomeShare.DAL.Repositories
 {
-    public abstract class BaseRepository<T> where T : class, new()
+    public abstract class BaseRepository<T>
+        where T : class, new()
     {
         protected SqlConnection connection;
 
@@ -48,8 +49,7 @@ namespace HomeShare.DAL.Repositories
                 return null;
             }
         }
-
-        protected List<T> Get(string requete, Dictionary<string, object> parameters)
+        protected List<T> Get(string requete, Dictionary<string, object> parametres)
         {
             if (Connect())
             {
@@ -57,14 +57,12 @@ namespace HomeShare.DAL.Repositories
                 //List<Utilisateur> retour = new List<Utilisateur>();            
                 // si pas de contraintes (Where T :....) ==> (List<T>)Activator.CreateInstance(typeof(List<T>));
                 List<T> retour = new List<T>();
-                //Création de commande
                 SqlCommand oCmd = new SqlCommand(requete, connection);
-
-                foreach (var item in parameters)
+                foreach (var item in parametres)
                 {
                     oCmd.Parameters.Add(new SqlParameter(item.Key, item.Value));
                 }
-
+                //Création de commande
 
                 SqlDataReader oDr = oCmd.ExecuteReader();
                 //Je lis ligne par ligne
@@ -219,8 +217,10 @@ namespace HomeShare.DAL.Repositories
                 return false;
             }
         }
+
+
+
         #endregion
-        
         #region Private
 
         /// <summary>
@@ -256,6 +256,8 @@ namespace HomeShare.DAL.Repositories
                 return false;
             }
         }
+
+
 
         /// <summary>
         /// Permet de mapper les colonnes du datareader aux propriétés de l'objet T à renvoyer
@@ -346,6 +348,4 @@ namespace HomeShare.DAL.Repositories
         #endregion
         #endregion
     }
-
 }
-

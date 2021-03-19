@@ -27,6 +27,18 @@ namespace HomeShare.Repositories
             throw new NotImplementedException();
         }
 
+        public MembreEntity GetFromLogin(string login, string password)
+        {
+            string requete = @" EXEC [dbo].[sp_Verification_Login] 
+                                                        @login,
+                                                        @password";
+            Dictionary<string, object> parametre = new Dictionary<string, object>();
+            parametre.Add("login", login);
+            parametre.Add("password", password);
+
+            return base.Get(requete, parametre).FirstOrDefault();
+        }
+
         public MembreEntity GetOne(int PK)
         {
             throw new NotImplementedException();
