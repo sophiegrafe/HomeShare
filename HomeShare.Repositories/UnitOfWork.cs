@@ -40,7 +40,7 @@ namespace HomeShare.Repositories
         }
 
 
-        public MembreModel UserAuth(LoginModel lm)
+        public MembreModel MembreAuth(LoginModel lm)
         {
             MembreEntity me = ((MembreRepository)_membreRepo).GetFromLogin(lm.Login, lm.Password);
             if (me == null) return null;

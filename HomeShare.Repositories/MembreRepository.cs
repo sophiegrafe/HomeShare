@@ -29,7 +29,7 @@ namespace HomeShare.Repositories
 
         public MembreEntity GetFromLogin(string login, string password)
         {
-            string requete = @" EXEC [dbo].[sp_Verification_Login] 
+            string requete = @"EXEC [dbo].[sp_Verification_Login] 
                                                         @login,
                                                         @password";
             Dictionary<string, object> parametre = new Dictionary<string, object>();
@@ -46,7 +46,7 @@ namespace HomeShare.Repositories
 
         public bool Insert(MembreEntity toInsert)
         {
-            string requete = @"EXECUTE [dbo].[sp_Membre_Insert] 
+            string requete = @"EXEC [dbo].[sp_Membre_Insert] 
             @login
             ,@password
             ,@nom
