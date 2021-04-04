@@ -24,7 +24,7 @@ namespace HomeShare.Repositories
         #region Account
         public bool CreateMember(MembreModel mm)
         {
-            MembreEntity membreEntity = new MembreEntity()
+            MembreEntity me = new MembreEntity()
             {
                 Nom = mm.Nom,
                 Prenom = mm.Prenom,
@@ -34,7 +34,7 @@ namespace HomeShare.Repositories
                 Telephone = mm.Telephone,
                 Pays = mm.Pays,
             };
-            return _membreRepo.Insert(membreEntity);
+            return _membreRepo.Insert(me);
 
 
         }
@@ -67,8 +67,9 @@ namespace HomeShare.Repositories
         }
         #endregion
 
+        #region Biens
         public List<BienModel> GetAllBien()
-        {   
+        {
             // est ce que faire ça revient à faire un foreach + NomdelaListe.Add(bm) comme pour GetLast5?
 
             return _bienRepo.Get()
@@ -91,13 +92,14 @@ namespace HomeShare.Repositories
                     Longitude = m.Longitude,
                     AssuranceObligatoire = m.AssuranceObligatoire,
                     IsEnabled = m.IsEnabled,
-                    DisabledDate = m.DisabledDate, 
+                    DisabledDate = m.DisabledDate,
                     DateCreation = m.DateCreation
                 }
                 ).ToList();
 
         }
 
+        // obtenir les détails du bien cliqué dans les sliders de la homepage pour alimenter la page détail du bien.
         public BienModel GetBienDetails()
         {
 
@@ -136,7 +138,7 @@ namespace HomeShare.Repositories
 
         public List<BienModel> GetLast5ForCtrl()
 
-        {   
+        {
             // aller chercher la liste de bien de la vue sql
             List<BienEntity> Last5FromDB = ((BienRepository)_bienRepo).GetLast5();
             List<BienModel> Last5ForCtrl = new List<BienModel>();
@@ -160,7 +162,31 @@ namespace HomeShare.Repositories
             }
             return Last5ForCtrl;
         }
-        
+
+        // inserer un nouveau bien dans la db
+        public bool CreateBien(BienModel bm)
+        {
+            BienEntity be = new BienEntity()
+            {
+                Titre = bm.Titre,
+                DescCourte = bm.DescCourte,
+                DescLong = bm.DescLong,
+                Numero = bm.Numero,
+                Rue = bm.Rue,
+                CodePostal = bm.CodePostal,
+                Ville = bm.Ville,
+                Pays = bm.Pays,
+                NombrePerson = bm.NombrePerson,
+                NbrSBD = bm.NbrSBD,
+                NbrWC = bm.NbrWC,
+            };
+            return _bienRepo.Insert(be);
+
+
+        }
+
+        #endregion
+
 
     }
 }

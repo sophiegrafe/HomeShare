@@ -4,3 +4,9 @@ C:\Users\Sophie\source\repos\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Mode
 C:\Users\Sophie\source\repos\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.csproj.CoreCompileInputs.cache
 C:\Users\Sophie\source\repos\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.dll
 C:\Users\Sophie\source\repos\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.pdb
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\bin\Debug\HomeShare.Models.dll
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\bin\Debug\HomeShare.Models.pdb
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.csprojAssemblyReference.cache
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.csproj.CoreCompileInputs.cache
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.dll
+C:\Users\Sophie\Desktop\HomeShare\HomeShare\HomeShare.Models\obj\Debug\HomeShare.Models.pdb

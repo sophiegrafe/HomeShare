@@ -9,11 +9,12 @@ namespace HomeShare.Entities
     public class BienEntity
     {
         #region Fields
-        private int _idBien, idMembre, _nombrePerson, _pays;
+        private int _idBien, _idMembre, _nombrePerson, _nbrSBD, _nbrWC, _pays;
         private string _titre, _descCourte, _descLong, _ville, _rue, _numero, _codePostal, _photo, _latitude, _longitude;
         private bool _assuranceObligatoire, _isEnabled;
         private DateTime? _disabledDate;
         private DateTime _dateCreation;
+
         #endregion
 
         #region Properties
@@ -34,12 +35,12 @@ namespace HomeShare.Entities
         {
             get
             {
-                return idMembre;
+                return _idMembre;
             }
 
             set
             {
-                idMembre = value;
+                _idMembre = value;
             }
         }
 
@@ -53,6 +54,32 @@ namespace HomeShare.Entities
             set
             {
                 _nombrePerson = value;
+            }
+        }
+
+        public int NbrSBD
+        {
+            get
+            {
+                return _nbrSBD;
+            }
+
+            set
+            {
+                _nbrSBD = value;
+            }
+        }
+
+        public int NbrWC
+        {
+            get
+            {
+                return _nbrWC;
+            }
+
+            set
+            {
+                _nbrWC = value;
             }
         }
 
@@ -250,7 +277,6 @@ namespace HomeShare.Entities
                 _dateCreation = value;
             }
         }
-
 
         #endregion
     }
