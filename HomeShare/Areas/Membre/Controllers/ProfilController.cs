@@ -21,5 +21,20 @@ namespace HomeShare.Areas.Membre.Controllers
 
             return View();
         }
+
+
+
+
+        public ActionResult AjouterBien()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjouterBien(BienModel bm)
+        {
+
+            return View();
+        }
     }
 }
