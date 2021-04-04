@@ -7,7 +7,7 @@
 <div class="">
     <div id="slider" class="sl-slider-wrapper">
         <div class="sl-slider">
-            @foreach (HomeShare.Models.BienModel item in Model.ListTopBien)
+            @foreach (HomeShare.Models.BienModel item in Model.Last5Biens)
             {
             <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                 <div class="sl-slide-inner">
@@ -93,7 +93,7 @@
         <h2>Nos meilleurs biens</h2>
         <div id="owl-example" class="owl-carousel">
             
-            @foreach (HomeShare.Models.BienModel item in Model.ListTopBien)
+            @foreach (HomeShare.Models.BienModel item in Model.Last5Biens)
             {
             <div class="properties">
                 <div class="image-holder">
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach (HomeShare.Models.BienModel item in Model.ListTopBien)
+                        @foreach (HomeShare.Models.BienModel item in Model.Last5Biens)
                         {
                             <div class="item">
                                 <div class="row">

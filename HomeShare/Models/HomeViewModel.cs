@@ -12,28 +12,28 @@ namespace HomeShare.Models
         #region Field
         private UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
 
-        private List<BienModel> _listTopBien;
+        private List<BienModel> _last5Biens;
 
         #endregion
         public HomeViewModel()
         {
 
-            ListTopBien = uow.GetAllBien();
+            Last5Biens = uow.GetLast5ForCtrl();
 
         }
 
         #region Properties
 
-        public List<BienModel> ListTopBien
+        public List<BienModel> Last5Biens
         {
             get
             {
-                return _listTopBien;
+                return _last5Biens;
             }
 
             set
             {
-                _listTopBien = value;
+                _last5Biens = value;
             }
         }
         #endregion

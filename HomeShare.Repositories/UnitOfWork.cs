@@ -68,7 +68,8 @@ namespace HomeShare.Repositories
         #endregion
 
         public List<BienModel> GetAllBien()
-        {
+        {   
+            // est ce que faire ça revient à faire un foreach + NomdelaListe.Add(bm) comme pour GetLast5?
 
             return _bienRepo.Get()
                 .Select(m =>
@@ -124,6 +125,42 @@ namespace HomeShare.Repositories
 
             return bienForController;
         }
+
+        //_________________________________
+
+        /*prob pendant l'épreuve : impossible d'utiliser la vue sql top 5 de "GetLast5()"
+          renvoi à l'absence de la methode dans baseRepository
+          erreur --> oublié de caster le _bienRepo : _bienRepo.GetLast5()
+          solution --> !!! ((BienRepository)_bienRepo).GetLast5() !!! */
+        //_________________________________
+
+        public List<BienModel> GetLast5ForCtrl()
+
+        {   
+            // aller chercher la liste de bien de la vue sql
+            List<BienEntity> Last5FromDB = ((BienRepository)_bienRepo).GetLast5();
+            List<BienModel> Last5ForCtrl = new List<BienModel>();
+            // mapping pour chaque bien de la liste
+            foreach (BienEntity be in Last5FromDB)
+            {
+                //instanciation du BienModel
+                BienModel bm = new BienModel();
+
+                //mapping
+                bm.IdBien = be.IdBien;
+                bm.Titre = be.Titre;
+                bm.Ville = be.Ville;
+                bm.DescCourte = be.DescCourte;
+                bm.NombrePerson = be.NombrePerson;
+                bm.IsEnabled = be.IsEnabled;
+                bm.Photo = be.Photo;
+
+                //ajout à la liste de biens à renvoyer au controller
+                Last5ForCtrl.Add(bm);
+            }
+            return Last5ForCtrl;
+        }
+        
 
     }
 }
