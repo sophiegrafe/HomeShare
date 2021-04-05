@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace HomeShare.Repositories
 {
@@ -35,8 +36,6 @@ namespace HomeShare.Repositories
                 Pays = mm.Pays,
             };
             return _membreRepo.Insert(me);
-
-
         }
 
 
@@ -45,8 +44,7 @@ namespace HomeShare.Repositories
             MembreEntity me = ((MembreRepository)_membreRepo).GetFromLogin(lm.Login, lm.Password);
             if (me == null) return null;
             if (me != null)
-            {   
-
+            {
                 return new MembreModel()
                 {
                     IdMembre = me.IdMembre,
@@ -57,13 +55,45 @@ namespace HomeShare.Repositories
                     Email = me.Email,
                     Telephone = me.Telephone,
                     Pays = me.Pays
-
                 };
             }
             else
             {
                 return null;
             }
+        }
+
+
+        public bool UpdateMembre(MembreInfosModel mim)
+        {
+            // pour transmettre l'id du membre connecté
+            MembreModel membreToUpdate = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
+
+            MembreEntity me = new MembreEntity()
+            {
+                IdMembre = membreToUpdate.IdMembre,                
+                Nom = mim.Nom,
+                Prenom = mim.Prenom,
+                Email = mim.Email,
+                Telephone = mim.Telephone,
+                Pays = mim.Pays,
+                //Login = membreToUpdate.Login,
+                //Password = membreToUpdate.Password,
+
+            };
+
+
+            return _membreRepo.Update(me);
+
+            /* NB --> Je voudrais affiner l'Update avec un foreach mais je n'y arrive pas.
+             * 
+                  Essai 1 :    dire : if la prop == null --> affecte membreToUpdate.propCorrespondante à me.propCorrespondante
+                                      else --> affecte mim.thisProp à me.propCorrespondante
+            
+                  Essai 2 :    n'affecte à me que les props correspondantes et non null de mim
+                               et modifier la methode update dans membrerepository pour qu'elle ne set que les props de me reçues.
+            */
+
         }
         #endregion
 
@@ -132,8 +162,8 @@ namespace HomeShare.Repositories
 
         /*prob pendant l'épreuve : impossible d'utiliser la vue sql top 5 de "GetLast5()"
           renvoi à l'absence de la methode dans baseRepository
-          erreur --> oublié de caster le _bienRepo : _bienRepo.GetLast5()
-          solution --> !!! ((BienRepository)_bienRepo).GetLast5() !!! */
+          ERREUR --> oublié de caster le _bienRepo : _bienRepo.GetLast5()
+          ATTENTION --> !!! ((BienRepository)_bienRepo).GetLast5() !!! */
         //_________________________________
 
         public List<BienModel> GetLast5ForCtrl()
@@ -181,6 +211,29 @@ namespace HomeShare.Repositories
                 NbrWC = bm.NbrWC,
             };
             return _bienRepo.Insert(be);
+
+
+        }
+
+        // modifier un bien
+
+        public bool UpdateBien(BienModel bm)
+        {
+            BienEntity be = new BienEntity()
+            {
+                Titre = bm.Titre,
+                DescCourte = bm.DescCourte,
+                DescLong = bm.DescLong,
+                Numero = bm.Numero,
+                Rue = bm.Rue,
+                CodePostal = bm.CodePostal,
+                Ville = bm.Ville,
+                Pays = bm.Pays,
+                NombrePerson = bm.NombrePerson,
+                NbrSBD = bm.NbrSBD,
+                NbrWC = bm.NbrWC,
+            };
+            return _bienRepo.Update(be);
 
 
         }

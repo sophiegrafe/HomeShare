@@ -60,7 +60,13 @@ namespace HomeShare.Repositories
 
         public bool Update(MembreEntity toUpdate)
         {
-            throw new NotImplementedException();
+            string requete = $"UPDATE Membre SET Nom = '{toUpdate.Nom}'" +
+                                           $", Prenom = '{ toUpdate.Prenom }'" +
+                                           $", Email = '{ toUpdate.Email }'" +
+                                           $", Telephone = '{ toUpdate.Telephone }'" +
+                                           $", Pays = { toUpdate.Pays } " +
+                             $"WHERE idMembre = {toUpdate.IdMembre}";
+            return base.Update(new MembreEntity(), requete);
         } 
         #endregion
     }
