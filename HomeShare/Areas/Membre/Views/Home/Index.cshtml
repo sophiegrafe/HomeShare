@@ -3,19 +3,39 @@
     ViewBag.Title = "Zone Membre";
 }
 
-    <!-- banner -->
-    <div class="inside-banner">
-        <div class="container">
-            <span class="pull-right"><a href="~/Home/Index">Home</a> / Zone Membre </span>
-            <h2>@ViewBag.Title</h2>
-        </div>
+<!-- banner -->
+<div class="inside-banner">
+    <!-- Nav Starts -->
+    <div class="navbar-collapse  collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="@ViewBag.Home"><a href="~/Home/Index">Home</a></li>
+            <li class="@ViewBag.About"><a href="~/Home/About">A propos de nous</a></li>
+            <li class="@ViewBag.Owners"><a href="~/Home/Owners">Les Propriétaires</a></li>
+            <li class="@ViewBag.Echanges"><a href="~/Home/Echanges">Les Biens en Echange</a></li>
+            <li class="@ViewBag.Contact"><a href="~/Home/Contact">Contactez-nous</a></li>
+            @if (HomeShare.infra.SessionUtils.IsLogged)
+            {
+                <li class="@ViewBag.MySpace"><a href="~/Membre/Home/Index">Mon espace</a></li>
+            }
+        </ul>
     </div>
-    <div>
-        <p> Ici votre tableau de bord avec toutes les fonctionnalité auxquelles vous avez accès</p>
-    </div>
-            <!-- banner -->
+    <!-- #Nav Ends -->
 
     <div class="container">
-        <a role="button" href="~/Membre/Profil/MyInfo" class="btn btn-danger">Modifier mon profil</a>
-        <a role="button" href="~/Membre/Sharing/AjouterBien" class="btn btn-danger">Ajouter un bien</a>
+        <span class="pull-right"><a href="~/Home/Index">Home</a> / Zone Membre </span>
+        <h2>@ViewBag.Title</h2>
     </div>
+</div>
+<div class="container">
+    <p>Mes infos</p>
+    <p>Mes derniers échanges</p>
+</div>
+<!-- banner -->
+
+<div class="container">
+    <a role="button" href="~/Membre/Profil/MyInfo" class="btn btn-danger">Modifier mon profil</a>
+    <a role="button" href="~/Membre/Sharing/AjouterBien" class="btn btn-danger">Ajouter un bien</a>
+</div>
+<div class="container">
+    <p>cartes de mes biens avec bouton "modifier" "supprimer"</p>
+</div>
