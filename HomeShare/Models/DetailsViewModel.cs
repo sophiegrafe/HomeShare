@@ -11,18 +11,18 @@ namespace HomeShare.Models
     public class DetailsViewModel
     {
         
-            #region Field
-            private UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
+        #region Field
+        private UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
 
-            private BienModel _detailsBien;
+        private BienModel _detailsBien;
 
-            #endregion
-            public DetailsViewModel()
-            {
+        #endregion
+        public DetailsViewModel()
+        {
 
-                DetailsBien = uow.GetBienDetails();
+            DetailsBien = uow.GetBienDetails();
 
-            }
+        }
 
         #region Properties
         public BienModel DetailsBien

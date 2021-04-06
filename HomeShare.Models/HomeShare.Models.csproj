@@ -45,6 +45,7 @@
     <Compile Include="BienModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="MembreInfosModel.cs" />
+    <Compile Include="PaysModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MembreModel.cs" />
   </ItemGroup>

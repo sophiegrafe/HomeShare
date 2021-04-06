@@ -15,11 +15,13 @@ namespace HomeShare.Repositories
     {
         IConcreteRepository<MembreEntity> _membreRepo;
         IConcreteRepository<BienEntity> _bienRepo;
+        IConcreteRepository<PaysEntity> _paysRepo;
 
         public UnitOfWork(string connectionString)
         {
             _membreRepo = new MembreRepository(connectionString);
             _bienRepo = new BienRepository(connectionString);
+            _paysRepo = new PaysRepository(connectionString);
         }
 
         #region Account
@@ -71,7 +73,7 @@ namespace HomeShare.Repositories
 
             MembreEntity me = new MembreEntity()
             {
-                IdMembre = membreToUpdate.IdMembre,                
+                IdMembre = membreToUpdate.IdMembre,
                 Nom = mim.Nom,
                 Prenom = mim.Prenom,
                 Email = mim.Email,
@@ -163,7 +165,7 @@ namespace HomeShare.Repositories
         /*prob pendant l'épreuve : impossible d'utiliser la vue sql top 5 de "GetLast5()"
           renvoi à l'absence de la methode dans baseRepository
           ERREUR --> oublié de caster le _bienRepo : _bienRepo.GetLast5()
-          ATTENTION --> !!! ((BienRepository)_bienRepo).GetLast5() !!! */
+          au lieu de --> !!! ((BienRepository)_bienRepo).GetLast5() !!! */
         //_________________________________
 
         public List<BienModel> GetLast5ForCtrl()
@@ -211,6 +213,36 @@ namespace HomeShare.Repositories
                 NbrWC = bm.NbrWC,
             };
             return _bienRepo.Insert(be);
+
+
+        }
+
+        //envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
+        public List<PaysModel> GetAllPays()
+        {
+
+            List<PaysEntity> ListePaysFromDB = ((PaysRepository)_paysRepo).Get();
+            List<PaysModel> ListePaysForCtrl = new List<PaysModel>();
+
+            foreach (PaysEntity pe in ListePaysFromDB)
+            {
+                PaysModel pm = new PaysModel();
+                pm.IdPays = pe.IdPays;
+                pm.NomPays = pe.Libelle;
+                ListePaysForCtrl.Add(pm);
+            }
+            return ListePaysForCtrl;
+
+            // pourquoi ça ne marche pas ça ?
+
+            //return _paysRepo.Get()
+            //    .Select(p =>
+            //    new PaysModel()
+            //    {
+            //        IdPays = p.IdPays,
+            //        NomPays = p.NomPays,
+            //    }
+            //    ).ToList();
 
 
         }

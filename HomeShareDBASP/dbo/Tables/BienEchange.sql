@@ -15,8 +15,8 @@
     [DisabledDate]         DATE           NULL,
     [Latitude]             NVARCHAR (50)  NOT NULL,
     [Longitude]            NVARCHAR (50)  NOT NULL,
-    [idMembre]             INT            NOT NULL,
     [DateCreation]         DATE           CONSTRAINT [DF_BienEchange_DateCreation] DEFAULT (getdate()) NOT NULL,
+    [idMembre]             INT            NOT NULL,
     CONSTRAINT [PK_BienEchange] PRIMARY KEY CLUSTERED ([idBien] ASC),
     CONSTRAINT [FK_BienEchange_membre] FOREIGN KEY ([idMembre]) REFERENCES [dbo].[Membre] ([idMembre]),
     CONSTRAINT [FK_BienEchange_Pays] FOREIGN KEY ([Pays]) REFERENCES [dbo].[Pays] ([idPays])

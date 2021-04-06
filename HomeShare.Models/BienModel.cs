@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,7 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]        
         public int NombrePerson
         {
             get
@@ -56,6 +58,7 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]        
         public int NbrSBD
         {
             get
@@ -69,6 +72,7 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
         public int NbrWC
         {
             get
@@ -82,6 +86,7 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
         public int Pays
         {
             get
@@ -95,6 +100,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(50)]
         public string Titre
         {
             get
@@ -108,6 +115,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(150)]
         public string DescCourte
         {
             get
@@ -121,6 +130,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(1000)]
         public string DescLong
         {
             get
@@ -134,6 +145,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(50)]
         public string Ville
         {
             get
@@ -147,6 +160,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(50)]
         public string Rue
         {
             get
@@ -160,6 +175,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(5)]
         public string Numero
         {
             get
@@ -173,6 +190,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(50)]
         public string CodePostal
         {
             get
@@ -186,6 +205,8 @@ namespace HomeShare.Models
             }
         }
 
+        [Required]
+        [MaxLength(50)]
         public string Photo
         {
             get

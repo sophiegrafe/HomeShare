@@ -130,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="infra\SessionUtils.cs" />
+    <Compile Include="Models\AjouterBienViewModel.cs" />
     <Compile Include="Models\DetailsViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,8 +199,8 @@
     <Content Include="Areas\Membre\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Membre\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Membre\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Membre\Views\Profil\AjouterBien.cshtml" />
     <Content Include="Areas\Membre\Views\Profil\MyInfo.cshtml" />
+    <Content Include="Areas\Membre\Views\Sharing\AjouterBien.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -233,7 +234,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Membre\Data\" />
-    <Folder Include="Areas\Membre\Views\Sharing\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

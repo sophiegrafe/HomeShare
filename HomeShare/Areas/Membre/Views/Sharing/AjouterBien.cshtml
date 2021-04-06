@@ -1,0 +1,165 @@
+﻿@model HomeShare.Models.AjouterBienViewModel
+
+@{
+    ViewBag.Title = "Ajouter un nouveau bien";
+}
+<!-- banner -->
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="~/Home/Index">Home</a> /About </span>
+        <h2>Zone Membre</h2>
+    </div>
+</div>
+<!-- banner -->
+<h2>@ViewBag.Title</h2>
+
+
+<div class="container">
+    <div class="spacer">
+        <div class="row">
+            <div class="col-lg-8 col-sm-8">
+                @*@using (Html.BeginForm())
+                {*@
+                    @Html.AntiForgeryToken()
+                    <form action="~/Membre/Sharing/AjouterBien" method="post">
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.NewBien.Titre, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.Titre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.DescCourte, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextAreaFor(model => model.NewBien.DescCourte, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.DescCourte, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.DescLong, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextAreaFor(model => model.NewBien.DescLong, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.DescLong, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Pays, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-4">
+                                    @*Essayé d'utliser le dropDownListFor mais faut enumerable ou bindProperties, à voir plus tard*@
+                                    @*@Html.DropDownListFor(model => model.Pays, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Pays, "", new { @class = "text-danger" })*@
+
+                                    <select name="Pays" class="form-control">
+                                        @foreach (HomeShare.Models.PaysModel pays in Model.ListePays)
+                                        {
+                                            <option value="@pays.IdPays">@pays.NomPays</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Ville, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-4">
+                                    @Html.EditorFor(model => model.NewBien.Ville, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.Ville, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-1">
+                                    @Html.EditorFor(model => model.NewBien.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.Numero, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Rue, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-4">
+                                    @Html.EditorFor(model => model.NewBien.Rue, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.Rue, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.CodePostal, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.NewBien.CodePostal, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.CodePostal, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.NewBien.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.Photo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.NombrePerson, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.NewBien.NombrePerson, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.NombrePerson, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.NbrSBD, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.NewBien.NbrSBD, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.NbrSBD, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.NbrWC, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.NewBien.NbrWC, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.NbrWC, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NewBien.AssuranceObligatoire, htmlAttributes: new { @class = "control-label col-md-3"})
+                                <div class="col-md-4">
+                                    @Html.CheckBoxFor(model => model.NewBien.AssuranceObligatoire, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewBien.AssuranceObligatoire, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-6">
+                                    <input type="submit" value="Create" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                @*}*@
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <div class="container">
+                    <h2>Propriétaire</h2>
+                    @*En attendant de traiter la question de la photo pour le membre --> image agent de source*@
+                    <img src="~/images/agents/1.jpg" alt="Photo du propriétaire" />
+                    <h3>@HomeShare.infra.SessionUtils.ConnectedUser.Nom</h3>
+                    <h3>@HomeShare.infra.SessionUtils.ConnectedUser.Prenom</h3>
+                    <a role="button" href="~/Membre/Profil/MyInfo" class="btn btn-danger">Modifier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
