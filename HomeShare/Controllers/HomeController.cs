@@ -14,40 +14,39 @@ namespace HomeShare.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Home = "active";
             HomeViewModel hvm = new HomeViewModel();
             return View(hvm);
         }
 
         public ActionResult About()
         {
-
+            ViewBag.About = "active";
             return View();
         }
 
         public ActionResult Owners()
         {
-
+            ViewBag.Owners = "active";
             return View();
         }
+
         public ActionResult Echanges()
         {
-
+            ViewBag.Echanges = "active";
             return View();
         }
-
-
 
         [HttpGet]
         public ActionResult BienDetails()
         {
-
+            ViewBag.BienDetails = "active";
             return View();
         }
 
         [HttpPost]
         public ActionResult BienDetails(FormCollection form)
         {
-            
             string strIdBien = form["IdBien"].ToString();
             int idBien = int.Parse(strIdBien);
             SessionUtils.IdBienDetails = idBien;
@@ -58,11 +57,8 @@ namespace HomeShare.Controllers
 
         public ActionResult Contact()
         {
-            
-
+            ViewBag.Contact = "active";
             return View();
         }
-
-
     }
 }

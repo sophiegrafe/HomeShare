@@ -24,7 +24,6 @@ namespace HomeShare.infra
             }
         }
 
-
         public static MembreModel ConnectedUser
         {
             get

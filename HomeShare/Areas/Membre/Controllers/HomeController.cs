@@ -11,6 +11,7 @@ namespace HomeShare.Areas.Membre.Controllers
         // GET: Membre/Home
         public ActionResult Index()
         {
+            ViewBag.MySapce = "active";
             return View();
         }
     }

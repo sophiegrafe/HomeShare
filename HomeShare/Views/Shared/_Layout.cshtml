@@ -33,14 +33,14 @@
                 <!-- Nav Starts -->
                 <div class="navbar-collapse  collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="~/Home/Index">Home</a></li>
-                        <li><a href="~/Home/About">A propos de nous</a></li>
-                        <li><a href="~/Home/Owners">Les Propriétaires</a></li>
-                        <li><a href="~/Home/Echanges">Les Biens en Echange</a></li>
-                        <li><a href="~/Home/Contact">Contactez-nous</a></li>
+                        <li class="@ViewBag.Home"><a href="~/Home/Index">Home</a></li>
+                        <li class="@ViewBag.About"><a href="~/Home/About">A propos de nous</a></li>
+                        <li class="@ViewBag.Owners"><a href="~/Home/Owners">Les Propriétaires</a></li>
+                        <li class="@ViewBag.Echanges"><a href="~/Home/Echanges">Les Biens en Echange</a></li>
+                        <li class="@ViewBag.Contact"><a href="~/Home/Contact">Contactez-nous</a></li>
                         @if (HomeShare.infra.SessionUtils.IsLogged)
                         {
-                            <li><a href="~/Membre/Home/Index">Mon espace</a></li>
+                            <li class="@ViewBag.MySpace"><a href="~/Membre/Home/Index">Mon espace</a></li>
                         }
                     </ul>
                 </div>
