@@ -4,14 +4,15 @@
     ViewBag.Title = "Home";
 }
 
-<div class="">
-    <div id="slider" class="sl-slider-wrapper">
-        <div class="sl-slider">
-            @foreach (HomeShare.Models.BienModel item in Model.Last5Biens)
-            {
+
+<div id="slider" class="sl-slider-wrapper">
+    <div class="sl-slider">
+        @foreach (HomeShare.Models.BienModel item in Model.Last5Biens)
+        {
             <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                 <div class="sl-slide-inner">
-                    <div class="bg-img bg-img-1"></div>
+                    @*faire un renderSection pour la css et retirer l'attribut style ci-dessous*@
+                    <div class="bg-img bg-img-cover" style="background-image:url(/images/properties/@item.Photo); background-size:contain; background-repeat:no-repeat"></div>
                     <h2><a href="#">@item.Titre</a></h2>
                     <blockquote>
                         <p class="location"><span class="glyphicon glyphicon-map-marker"></span>@item.Ville</p>
@@ -27,18 +28,17 @@
                     </blockquote>
                 </div>
             </div>
-            }
+        }
 
-        </div><!-- /sl-slider -->
-        <nav id="nav-dots" class="nav-dots">
-            <span class="nav-dot-current"></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </nav>
-    </div><!-- /slider-wrapper -->
-</div>
+    </div><!-- /sl-slider -->
+    <nav id="nav-dots" class="nav-dots">
+        <span class="nav-dot-current"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </nav>
+</div><!-- /slider-wrapper -->
 
 <div class="banner-search">
     <div class="container">

@@ -102,8 +102,6 @@ namespace HomeShare.Repositories
         #region Biens
         public List<BienModel> GetAllBien()
         {
-            // est ce que faire ça revient à faire un foreach + NomdelaListe.Add(bm) comme pour GetLast5?
-
             return _bienRepo.Get()
                 .Select(m =>
                 new BienModel()
@@ -128,7 +126,6 @@ namespace HomeShare.Repositories
                     DateCreation = m.DateCreation
                 }
                 ).ToList();
-
         }
 
         // obtenir les détails du bien cliqué dans les sliders de la homepage pour alimenter la page détail du bien.
@@ -170,7 +167,7 @@ namespace HomeShare.Repositories
 
         public List<BienModel> GetLast5ForCtrl()
 
-        {   
+        {
             //version avec lambda
             return ((BienRepository)_bienRepo).GetLast5()
                 .Select(bm =>
@@ -185,7 +182,7 @@ namespace HomeShare.Repositories
                     Photo = bm.Photo,
                 }
                 ).ToList();
-            
+        }
             // version foreach
             /*List<BienEntity> Last5FromDB = ((BienRepository)_bienRepo).GetLast5();
               List<BienModel> Last5ForCtrl = new List<BienModel>();
@@ -209,7 +206,7 @@ namespace HomeShare.Repositories
               Last5ForCtrl.Add(bm);
               }
               return Last5ForCtrl;*/
-        }
+        
 
         // inserer un nouveau bien dans la db
         public bool CreateBien(BienModel bm)
@@ -233,7 +230,7 @@ namespace HomeShare.Repositories
 
         }
 
-        //envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
+        // envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
         public List<PaysModel> GetAllPays()
         {
             //version lambda
