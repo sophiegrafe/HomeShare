@@ -220,35 +220,32 @@ namespace HomeShare.Repositories
         //envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
         public List<PaysModel> GetAllPays()
         {
-
-            List<PaysEntity> ListePaysFromDB = ((PaysRepository)_paysRepo).Get();
-            List<PaysModel> ListePaysForCtrl = new List<PaysModel>();
-
-            foreach (PaysEntity pe in ListePaysFromDB)
-            {
-                PaysModel pm = new PaysModel();
-                pm.IdPays = pe.IdPays;
-                pm.NomPays = pe.Libelle;
-                ListePaysForCtrl.Add(pm);
-            }
-            return ListePaysForCtrl;
-
-            // pourquoi ça ne marche pas ça ?
-
-            //return _paysRepo.Get()
-            //    .Select(p =>
-            //    new PaysModel()
-            //    {
-            //        IdPays = p.IdPays,
-            //        NomPays = p.NomPays,
-            //    }
-            //    ).ToList();
-
-
+            //version lambda
+            return _paysRepo.Get()
+                .Select(p =>
+                new PaysModel()
+                {
+                    IdPays = p.IdPays,
+                    NomPays = p.Libelle,
+                }
+                ).ToList();
         }
+        
+            //version foreach
+            /*List<PaysEntity> ListePaysFromDB = _paysRepo.Get();
+                List<PaysModel> ListePaysForCtrl = new List<PaysModel>();
+
+                foreach (PaysEntity pe in ListePaysFromDB)
+                {
+                    PaysModel pm = new PaysModel();
+                    pm.IdPays = pe.IdPays;
+                    pm.NomPays = pe.Libelle;
+                    ListePaysForCtrl.Add(pm);
+                }
+                return ListePaysForCtrl;*/
+
 
         // modifier un bien
-
         public bool UpdateBien(BienModel bm)
         {
             BienEntity be = new BienEntity()
