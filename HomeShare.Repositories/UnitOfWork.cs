@@ -170,29 +170,45 @@ namespace HomeShare.Repositories
 
         public List<BienModel> GetLast5ForCtrl()
 
-        {
-            // aller chercher la liste de bien de la vue sql
-            List<BienEntity> Last5FromDB = ((BienRepository)_bienRepo).GetLast5();
-            List<BienModel> Last5ForCtrl = new List<BienModel>();
-            // mapping pour chaque bien de la liste
-            foreach (BienEntity be in Last5FromDB)
-            {
-                //instanciation du BienModel
-                BienModel bm = new BienModel();
+        {   
+            //version avec lambda
+            return ((BienRepository)_bienRepo).GetLast5()
+                .Select(bm =>
+                new BienModel()
+                {
+                    IdBien = bm.IdBien,
+                    Titre = bm.Titre,
+                    Ville = bm.Ville,
+                    DescCourte = bm.DescCourte,
+                    NombrePerson = bm.NombrePerson,
+                    IsEnabled = bm.IsEnabled,
+                    Photo = bm.Photo,
+                }
+                ).ToList();
+            
+            // version foreach
+            /*List<BienEntity> Last5FromDB = ((BienRepository)_bienRepo).GetLast5();
+              List<BienModel> Last5ForCtrl = new List<BienModel>();
 
-                //mapping
-                bm.IdBien = be.IdBien;
-                bm.Titre = be.Titre;
-                bm.Ville = be.Ville;
-                bm.DescCourte = be.DescCourte;
-                bm.NombrePerson = be.NombrePerson;
-                bm.IsEnabled = be.IsEnabled;
-                bm.Photo = be.Photo;
+              //mapping pour chaque bien de la liste
 
-                //ajout à la liste de biens à renvoyer au controller
-                Last5ForCtrl.Add(bm);
-            }
-            return Last5ForCtrl;
+              foreach (BienEntity be in Last5FromDB)
+              {
+              BienModel bm = new BienModel();
+
+              bm.IdBien = be.IdBien;
+              bm.Titre = be.Titre;
+              bm.Ville = be.Ville;
+              bm.DescCourte = be.DescCourte;
+              bm.NombrePerson = be.NombrePerson;
+              bm.IsEnabled = be.IsEnabled;
+              bm.Photo = be.Photo;
+
+              //ajout à la liste de biens à renvoyer au controller
+
+              Last5ForCtrl.Add(bm);
+              }
+              return Last5ForCtrl;*/
         }
 
         // inserer un nouveau bien dans la db
@@ -222,11 +238,11 @@ namespace HomeShare.Repositories
         {
             //version lambda
             return _paysRepo.Get()
-                .Select(p =>
+                .Select(pm =>
                 new PaysModel()
                 {
-                    IdPays = p.IdPays,
-                    NomPays = p.Libelle,
+                    IdPays = pm.IdPays,
+                    NomPays = pm.Libelle,
                 }
                 ).ToList();
         }
@@ -241,7 +257,7 @@ namespace HomeShare.Repositories
                     pm.IdPays = pe.IdPays;
                     pm.NomPays = pe.Libelle;
                     ListePaysForCtrl.Add(pm);
-                }
+                } 
                 return ListePaysForCtrl;*/
 
 
