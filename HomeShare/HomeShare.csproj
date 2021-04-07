@@ -169,6 +169,7 @@
     <Content Include="images\instagram.png" />
     <Content Include="images\linkedin.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\logoHomeSharing.png" />
     <Content Include="images\owl-carousel\AjaxLoader.gif" />
     <Content Include="images\owl-carousel\grabbing.png" />
     <Content Include="images\properties\1.jpg" />
@@ -176,6 +177,7 @@
     <Content Include="images\properties\3.jpg" />
     <Content Include="images\properties\appart-ponteVecchio.jpg" />
     <Content Include="images\properties\cabaneCatsou.jpg" />
+    <Content Include="images\properties\logoHomeShare.jpg" />
     <Content Include="images\properties\maisonSousMarine.jpg" />
     <Content Include="images\properties\rockHouse.jpg" />
     <Content Include="images\slider\1.jpg" />

@@ -319,14 +319,13 @@ namespace HomeShare.DAL.Repositories
             //Mapping
             foreach (PropertyInfo item in maClasse.GetProperties())
             {
-                SqlParameter param = new SqlParameter();
-                param.ParameterName = item.Name;
-
-                //Un Sqlparameter = null (c#) ==> default côté DB
-                //Un sqlparameter = DBNull.Value(c#) ==> null côté DB
-
-
-                param.Value = item.GetValue(toMap) ?? DBNull.Value; //Coalesce
+                SqlParameter param = new SqlParameter
+                {
+                    ParameterName = item.Name,
+                    //Un Sqlparameter = null (c#) ==> default côté DB
+                    //Un sqlparameter = DBNull.Value(c#) ==> null côté DB
+                    Value = item.GetValue(toMap) ?? DBNull.Value //Coalesce
+                };
                 // if(item.GetValue(toMap)==null) 
                 //       param.Value =DBNull.value ;
                 // else

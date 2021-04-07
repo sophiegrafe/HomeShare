@@ -20,7 +20,6 @@ namespace HomeShare.Models
         private UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
         public AjouterBienViewModel()
         {
-            
             ListePays = uow.GetAllPays();
         }
         #endregion

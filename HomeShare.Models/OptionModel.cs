@@ -4,26 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeShare.Entities
+namespace HomeShare.Models
 {
-    public class PaysEntity
+    public class OptionModel
     {
         #region Fields
-        private int _idPays;
+        private int _idOption;
         private string _libelle;
         #endregion
 
         #region Properties
-        public int IdPays
+        public int IdOption
         {
             get
             {
-                return _idPays;
+                return _idOption;
             }
 
             set
             {
-                _idPays = value;
+                _idOption = value;
             }
         }
 

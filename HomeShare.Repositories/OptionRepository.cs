@@ -8,40 +8,36 @@ using System.Threading.Tasks;
 
 namespace HomeShare.Repositories
 {
-    public class PaysRepository : BaseRepository<PaysEntity>, IConcreteRepository<PaysEntity>
+    public class OptionRepository : BaseRepository<OptionEntity>, IConcreteRepository<OptionEntity>
     {
-        #region Ctor
-        public PaysRepository(string connectionString) : base(connectionString)
+        public OptionRepository(string connectionString) : base(connectionString)
         {
-        } 
-        #endregion
+        }
 
-        #region Methodes
-        public List<PaysEntity> Get()
+        public List<OptionEntity> Get()
         {
-            string requete = "SELECT * FROM Pays";
+            string requete = "SELECT * FROM Options";
             return Get(requete);
         }
 
-        public PaysEntity GetOne(int PK)
+        public OptionEntity GetOne(int PK)
         {
             throw new NotImplementedException();
         }
 
-        public bool Insert(PaysEntity toInsert)
+        public bool Insert(OptionEntity toInsert)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(PaysEntity toUpdate)
+        public bool Update(OptionEntity toUpdate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(PaysEntity toDelete)
+        public bool Delete(OptionEntity toDelete)
         {
             throw new NotImplementedException();
-        } 
-        #endregion
+        }
     }
 }

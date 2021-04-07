@@ -11,7 +11,7 @@ namespace HomeShare.Models
         #region Fields
 
         private int _idPays;
-        private string _nomPays;
+        private string _libelle;
         #endregion
 
         #region Properties
@@ -29,16 +29,16 @@ namespace HomeShare.Models
             }
         }
 
-        public string NomPays
+        public string Libelle
         {
             get
             {
-                return _nomPays;
+                return _libelle;
             }
 
             set
             {
-                _nomPays = value;
+                _libelle = value;
             }
         }
         #endregion

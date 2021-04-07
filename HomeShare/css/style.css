@@ -6,6 +6,60 @@
     font-style: normal;
 }
 
+/*more css*/
+
+.myHeaderFlex {width: 90vw; display: flex; flex-direction: column; justify-content: center;}
+
+.logo-homeSharing {
+    width: 50%; /*background-color: black; border-radius: 50%;*/
+}
+
+.modo {
+    margin: 0.2rem;
+    padding: 0rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    width: 75%
+}
+
+.logo-modo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-action {
+    align-self: center;
+}
+
+.search-zone {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-area-select {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-spacer {
+    width: 20%
+}
+
+.search-option {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-inline {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 body {	color:#555;	font:normal 13px/22px Arial;	background:url(~/images/bgmain.png) #eee;}
 
 h1,h2,h3,h4,h5 { font-weight:normal; font-family: din;margin: 0;padding: 0;color: #000}
@@ -39,13 +93,15 @@ table{background-color: #fff;}
 
 .thumbnail{ background-color:#fff;}
 
-.header {padding: 20px 0;}
+.header {padding: 20px 0; }
 .header ul{list-style: none;margin: 0; padding: 0;margin-top: 25px;}
 .header ul li{ display: inline-block; padding: 0 0 0 40px;}
 .header ul li a{ font-size: 19px;font-family: din;text-transform: uppercase;}
 .header ul li a:hover{text-decoration: none;}
 
-.navbar-inverse{background-color: #111;}
+.navbar-inverse {
+    background-color: #111;
+}
 .navbar-inverse .navbar-nav > li > a{font-size: 11px;padding-top: 10px;padding-bottom: 10px;font-family: din;text-transform: uppercase;}
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{background-color: #72b70f;}
 

@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace HomeShare.Entities
 {
-    public class PaysEntity
+    public class OptionEntity
     {
         #region Fields
-        private int _idPays;
+        private int _idOption;
         private string _libelle;
         #endregion
 
         #region Properties
-        public int IdPays
+        public int IdOption
         {
             get
             {
-                return _idPays;
+                return _idOption;
             }
 
             set
             {
-                _idPays = value;
+                _idOption = value;
             }
         }
 

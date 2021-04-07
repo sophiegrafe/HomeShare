@@ -30,13 +30,15 @@ namespace HomeShare.Repositories
         public MembreEntity GetFromLogin(string login, string password)
         {
             string requete = @"EXEC [dbo].[sp_Verification_Login] 
-                                                        @login,
-                                                        @password";
-            Dictionary<string, object> parametre = new Dictionary<string, object>();
-            parametre.Add("login", login);
-            parametre.Add("password", password);
+            @login,
+            @password";
+            Dictionary<string, object> parametre = new Dictionary<string, object>
+            {
+                { "login", login },
+                { "password", password }
+            };
 
-            return base.Get(requete, parametre).FirstOrDefault();
+            return Get(requete, parametre).FirstOrDefault();
         }
 
         public MembreEntity GetOne(int PK)
@@ -55,18 +57,18 @@ namespace HomeShare.Repositories
             ,@telephone
             ,@pays";
 
-            return base.Insert(toInsert, requete);
+            return Insert(toInsert, requete);
         }
 
         public bool Update(MembreEntity toUpdate)
         {
-            string requete = $"UPDATE Membre SET Nom = '{toUpdate.Nom}'" +
-                                             $", Prenom = '{ toUpdate.Prenom }'" +
-                                             $", Email = '{ toUpdate.Email }'" +
-                                             $", Telephone = '{ toUpdate.Telephone }'" +
-                                             $", Pays = { toUpdate.Pays } " +
-                             $"WHERE idMembre = {toUpdate.IdMembre}";
-            return base.Update(new MembreEntity(), requete);
+            string requete = $@"UPDATE Membre SET Nom = '{toUpdate.Nom}'
+                                                 ,Prenom = '{ toUpdate.Prenom }'
+                                                 ,Email = '{ toUpdate.Email }'
+                                                 ,Telephone = '{ toUpdate.Telephone }'
+                                                 ,Pays = { toUpdate.Pays }
+                                WHERE idMembre = {toUpdate.IdMembre}";
+            return Update(new MembreEntity(), requete);
         } 
         #endregion
     }

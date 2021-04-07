@@ -16,12 +16,14 @@ namespace HomeShare.Repositories
         IConcreteRepository<MembreEntity> _membreRepo;
         IConcreteRepository<BienEntity> _bienRepo;
         IConcreteRepository<PaysEntity> _paysRepo;
+        IConcreteRepository<OptionEntity> _optionRepo;
 
         public UnitOfWork(string connectionString)
         {
             _membreRepo = new MembreRepository(connectionString);
             _bienRepo = new BienRepository(connectionString);
             _paysRepo = new PaysRepository(connectionString);
+            _optionRepo = new OptionRepository(connectionString);
         }
 
         #region Account
@@ -70,8 +72,7 @@ namespace HomeShare.Repositories
         {
             // pour transmettre l'id du membre connecté
             MembreModel membreToUpdate = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
-
-            MembreEntity me = new MembreEntity()
+            MembreEntity me = new MembreEntity
             {
                 IdMembre = membreToUpdate.IdMembre,
                 Nom = mim.Nom,
@@ -81,22 +82,16 @@ namespace HomeShare.Repositories
                 Pays = mim.Pays,
                 //Login = membreToUpdate.Login,
                 //Password = membreToUpdate.Password,
-
             };
 
-
             return _membreRepo.Update(me);
+        }
 
-            /* NB --> Je voudrais affiner l'Update avec un foreach mais je n'y arrive pas.
-             * 
+                /*NB --> Je voudrais affiner l'Update avec un foreach mais je n'y arrive pas.
                   Essai 1 :    dire : if la prop == null --> affecte membreToUpdate.propCorrespondante à me.propCorrespondante
                                       else --> affecte mim.thisProp à me.propCorrespondante
-            
                   Essai 2 :    n'affecte à me que les props correspondantes et non null de mim
-                               et modifier la methode update dans membrerepository pour qu'elle ne set que les props de me reçues.
-            */
-
-        }
+                               et modifier la methode update dans membrerepository pour qu'elle ne set que les props de me reçues.*/
         #endregion
 
         #region Biens
@@ -133,26 +128,27 @@ namespace HomeShare.Repositories
         {
 
             BienEntity bienFromDB = _bienRepo.GetOne((int)HttpContext.Current.Session["IdBienDetails"]);
-            BienModel bienForController = new BienModel();
-
-            bienForController.IdBien = bienFromDB.IdBien;
-            bienForController.IdMembre = bienFromDB.IdMembre;
-            bienForController.NombrePerson = bienFromDB.NombrePerson;
-            bienForController.Pays = bienFromDB.Pays;
-            bienForController.Titre = bienFromDB.Titre;
-            bienForController.DescCourte = bienFromDB.DescCourte;
-            bienForController.DescLong = bienFromDB.DescLong;
-            bienForController.Ville = bienFromDB.Ville;
-            bienForController.Rue = bienFromDB.Rue;
-            bienForController.Numero = bienFromDB.Numero;
-            bienForController.CodePostal = bienFromDB.CodePostal;
-            bienForController.Photo = bienFromDB.Photo;
-            bienForController.Latitude = bienFromDB.Latitude;
-            bienForController.Longitude = bienFromDB.Longitude;
-            bienForController.AssuranceObligatoire = bienFromDB.AssuranceObligatoire;
-            bienForController.IsEnabled = bienFromDB.IsEnabled;
-            bienForController.DisabledDate = bienFromDB.DisabledDate;
-            bienForController.DateCreation = bienFromDB.DateCreation;
+            BienModel bienForController = new BienModel
+            {
+                IdBien = bienFromDB.IdBien,
+                IdMembre = bienFromDB.IdMembre,
+                NombrePerson = bienFromDB.NombrePerson,
+                Pays = bienFromDB.Pays,
+                Titre = bienFromDB.Titre,
+                DescCourte = bienFromDB.DescCourte,
+                DescLong = bienFromDB.DescLong,
+                Ville = bienFromDB.Ville,
+                Rue = bienFromDB.Rue,
+                Numero = bienFromDB.Numero,
+                CodePostal = bienFromDB.CodePostal,
+                Photo = bienFromDB.Photo,
+                Latitude = bienFromDB.Latitude,
+                Longitude = bienFromDB.Longitude,
+                AssuranceObligatoire = bienFromDB.AssuranceObligatoire,
+                IsEnabled = bienFromDB.IsEnabled,
+                DisabledDate = bienFromDB.DisabledDate,
+                DateCreation = bienFromDB.DateCreation
+            };
 
             return bienForController;
         }
@@ -166,7 +162,6 @@ namespace HomeShare.Repositories
         //_________________________________
 
         public List<BienModel> GetLast5ForCtrl()
-
         {
             //version avec lambda
             return ((BienRepository)_bienRepo).GetLast5()
@@ -211,7 +206,7 @@ namespace HomeShare.Repositories
         // inserer un nouveau bien dans la db
         public bool CreateBien(BienModel bm)
         {
-            BienEntity be = new BienEntity()
+            BienEntity be = new BienEntity
             {
                 Titre = bm.Titre,
                 DescCourte = bm.DescCourte,
@@ -226,8 +221,6 @@ namespace HomeShare.Repositories
                 NbrWC = bm.NbrWC,
             };
             return _bienRepo.Insert(be);
-
-
         }
 
         // envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
@@ -239,7 +232,7 @@ namespace HomeShare.Repositories
                 new PaysModel()
                 {
                     IdPays = pm.IdPays,
-                    NomPays = pm.Libelle,
+                    Libelle = pm.Libelle,
                 }
                 ).ToList();
         }
@@ -261,7 +254,7 @@ namespace HomeShare.Repositories
         // modifier un bien
         public bool UpdateBien(BienModel bm)
         {
-            BienEntity be = new BienEntity()
+            BienEntity be = new BienEntity
             {
                 Titre = bm.Titre,
                 DescCourte = bm.DescCourte,
@@ -276,12 +269,20 @@ namespace HomeShare.Repositories
                 NbrWC = bm.NbrWC,
             };
             return _bienRepo.Update(be);
-
-
         }
-
         #endregion
 
-
+        #region Zone Search
+        // envoyer une liste d'option pour la zone de recherche et le formumaire
+        public List<OptionModel> GetAllOption()
+        {
+            return _optionRepo.Get()
+                .Select(om => new OptionModel()
+                { 
+                    IdOption = om.IdOption,
+                    Libelle = om.Libelle,
+                }).ToList();
+        }
+        #endregion
     }
 }

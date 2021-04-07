@@ -31,12 +31,12 @@
 
 
                 <!-- Nav Starts -->
-                <div class="navbar-collapse  collapse">
+                <div class="navbar-collapse  collapse">                    
                     <ul class="nav navbar-nav navbar-right">
                         <li class="@ViewBag.Home"><a href="~/Home/Index">Home</a></li>
                         <li class="@ViewBag.About"><a href="~/Home/About">A propos de nous</a></li>
                         <li class="@ViewBag.Owners"><a href="~/Home/Owners">Les Propriétaires</a></li>
-                        <li class="@ViewBag.Echanges"><a href="~/Home/Echanges">Les Biens en Echange</a></li>
+                        <li class="@ViewBag.Echanges"><a href="~/Home/Echanges">Les Biens à Echanger</a></li>
                         <li class="@ViewBag.Contact"><a href="~/Home/Contact">Contactez-nous</a></li>
                         @if (HomeShare.infra.SessionUtils.IsLogged)
                         {
@@ -48,16 +48,18 @@
 
             </div>
         </div>
-
     </div>
     <!-- #Header Starts -->
     <div class="container">
 
         <!-- Header Starts -->
-        <div class="header">
-            <a href="~/Home/Index"><img src="~/images/logo.png" alt="Home Share"></a>
+        <div class="header myHeaderFlex">
+            <div class="logo-modo">
+                <img class="" src="~/images/logo.png" alt="Home Share">
+                <p class="modo">Share your home... share the world ...</p>
+            </div>
 
-            <ul class="pull-right">
+            <ul class="">
                 @if (HomeShare.infra.SessionUtils.IsLogged)
                 {
                     <li><a href="~/Membre/Home/Index">Echanger</a></li>
@@ -76,7 +78,7 @@
                 {
                     <li><a href="~/Account/Login">Se connecter</a></li>
                 }
-                
+
             </ul>
         </div>
         <!-- #Header Starts -->
