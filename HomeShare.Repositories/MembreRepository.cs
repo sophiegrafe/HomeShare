@@ -49,7 +49,7 @@ namespace HomeShare.Repositories
         public bool Insert(MembreEntity toInsert)
         {
             string requete = @"EXEC [dbo].[sp_Membre_Insert] 
-            @login
+             @login
             ,@password
             ,@nom
             ,@prenom
@@ -62,12 +62,12 @@ namespace HomeShare.Repositories
 
         public bool Update(MembreEntity toUpdate)
         {
-            string requete = $@"UPDATE Membre SET Nom = '{toUpdate.Nom}'
-                                                 ,Prenom = '{ toUpdate.Prenom }'
-                                                 ,Email = '{ toUpdate.Email }'
-                                                 ,Telephone = '{ toUpdate.Telephone }'
-                                                 ,Pays = { toUpdate.Pays }
-                                WHERE idMembre = {toUpdate.IdMembre}";
+            string requete = $"UPDATE Membre SET Nom = '{toUpdate.Nom}'" +
+                                             $", Prenom = '{ toUpdate.Prenom }'" +
+                                             $", Email = '{ toUpdate.Email }'" +
+                                             $", Telephone = '{ toUpdate.Telephone }'" +
+                                             $", Pays = '{ toUpdate.Pays }' " +
+                             $"WHERE idMembre = {toUpdate.IdMembre}";
             return Update(new MembreEntity(), requete);
         } 
         #endregion

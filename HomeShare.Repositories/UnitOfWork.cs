@@ -59,6 +59,8 @@ namespace HomeShare.Repositories
                     Email = me.Email,
                     Telephone = me.Telephone,
                     Pays = me.Pays
+                    /* il y a un problème ici, Pays reste null,
+                     * j'ai vérifier le type, la vue sql, ... je ne trouve pas l'erreur */
                 };
             }
             else
@@ -70,28 +72,63 @@ namespace HomeShare.Repositories
 
         public bool UpdateMembre(MembreInfosModel mim)
         {
-            // pour transmettre l'id du membre connecté
+            // transmettre l'id du membre connecté
             MembreModel membreToUpdate = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
-            MembreEntity me = new MembreEntity
-            {
-                IdMembre = membreToUpdate.IdMembre,
-                Nom = mim.Nom,
-                Prenom = mim.Prenom,
-                Email = mim.Email,
-                Telephone = mim.Telephone,
-                Pays = mim.Pays,
-                //Login = membreToUpdate.Login,
-                //Password = membreToUpdate.Password,
-            };
+            MembreEntity me = new MembreEntity();
+
+            if (mim.Nom == null)
+                {
+                    me.Nom = membreToUpdate.Nom;
+                }
+                else { me.Nom = mim.Nom; }
+
+                if (mim.Prenom == null)
+                {
+                    me.Prenom = membreToUpdate.Prenom;
+                }
+                else { me.Prenom = mim.Prenom; }
+
+                if (mim.Email == null)
+                {
+                    me.Email = membreToUpdate.Email;
+                }
+                else { me.Email = mim.Email; }
+
+                if (mim.Telephone == null)
+                {
+                    me.Telephone = membreToUpdate.Telephone;
+                }
+                else { me.Telephone = mim.Telephone; }
+           
+                if (mim.Pays == null)
+                {
+                    me.Pays = membreToUpdate.Pays;
+                }
+                else { me.Pays = mim.Pays; }
+
+                me.IdMembre = membreToUpdate.IdMembre;
 
             return _membreRepo.Update(me);
         }
+        /* je voulais remplacer les if par un
+           foreach (PropertyInfo prop in mm.GetType().GetProperties())
+           {
+               if (prop.GetValue(mim) != null)
+                { 
+                    me.GetType().GetProperties(????) = prop.GetValue(mim);
+                }
+                else
+                {
+                    me.GetType().GetProperties(?????) = membreToUpdate.GetValue(mim);
+                }
+           }
+           mais ca ne marche pas ... */
 
-                /*NB --> Je voudrais affiner l'Update avec un foreach mais je n'y arrive pas.
-                  Essai 1 :    dire : if la prop == null --> affecte membreToUpdate.propCorrespondante à me.propCorrespondante
-                                      else --> affecte mim.thisProp à me.propCorrespondante
-                  Essai 2 :    n'affecte à me que les props correspondantes et non null de mim
-                               et modifier la methode update dans membrerepository pour qu'elle ne set que les props de me reçues.*/
+        /*NB --> Je voudrais affiner l'Update avec un foreach mais je n'y arrive pas.
+          Essai 1 :    dire : if la prop == null --> affecte membreToUpdate.propCorrespondante à me.propCorrespondante
+                              else --> affecte mim.thisProp à me.propCorrespondante
+          Essai 2 :    n'affecte à me que les props correspondantes et non null de mim
+                       et modifier la methode update dans membrerepository pour qu'elle ne set que les props de me reçues.*/
         #endregion
 
         #region Biens
