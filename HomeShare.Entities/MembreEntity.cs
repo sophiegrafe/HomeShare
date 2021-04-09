@@ -9,8 +9,8 @@ namespace HomeShare.Entities
     public class MembreEntity
     {
         #region Fields
-        private int _idMembre;
-        private string _nom, _prenom, _email, _pays, _telephone, _login, _password;
+        private int _idMembre, _pays;
+        private string _nom, _prenom, _email, _telephone, _login, _password;
         #endregion
 
         #region Properties
@@ -66,7 +66,7 @@ namespace HomeShare.Entities
             }
         }
 
-        public string Pays
+        public int Pays
         {
             get
             {

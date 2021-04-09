@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="BienEntity.cs" />
     <Compile Include="MembreEntity.cs" />
+    <Compile Include="AjoutBienEntity.cs" />
+    <Compile Include="OptionBienEntity.cs" />
     <Compile Include="OptionEntity.cs" />
     <Compile Include="PaysEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

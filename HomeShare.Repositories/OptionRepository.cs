@@ -30,6 +30,8 @@ namespace HomeShare.Repositories
             throw new NotImplementedException();
         }
 
+        //adaptation de l'insert
+
         public bool Update(OptionEntity toUpdate)
         {
             throw new NotImplementedException();

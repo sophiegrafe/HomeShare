@@ -10,8 +10,8 @@ namespace HomeShare.Models
     public class MembreInfosModel
     {
         #region Fields
-        private int idMembre;
-        private string _nom, _prenom, _email, _pays, _telephone;
+        private int idMembre, _pays;
+        private string _nom, _prenom, _email, _telephone;
         #endregion
 
         #region Properties
@@ -71,7 +71,7 @@ namespace HomeShare.Models
             }
         }
         
-        public string Pays
+        public int Pays
         {
             get
             {

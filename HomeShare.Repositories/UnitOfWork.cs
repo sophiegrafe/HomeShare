@@ -15,6 +15,7 @@ namespace HomeShare.Repositories
     {
         IConcreteRepository<MembreEntity> _membreRepo;
         IConcreteRepository<BienEntity> _bienRepo;
+        IConcreteRepository<AjoutBienEntity> _ajoutBienRepo;
         IConcreteRepository<PaysEntity> _paysRepo;
         IConcreteRepository<OptionEntity> _optionRepo;
 
@@ -22,6 +23,7 @@ namespace HomeShare.Repositories
         {
             _membreRepo = new MembreRepository(connectionString);
             _bienRepo = new BienRepository(connectionString);
+            _ajoutBienRepo = new AjoutBienRepository(connectionString);
             _paysRepo = new PaysRepository(connectionString);
             _optionRepo = new OptionRepository(connectionString);
         }
@@ -58,9 +60,7 @@ namespace HomeShare.Repositories
                     Password = me.Password,
                     Email = me.Email,
                     Telephone = me.Telephone,
-                    Pays = me.Pays
-                    /* il y a un problème ici, Pays reste null,
-                     * j'ai vérifier le type, la vue sql, ... je ne trouve pas l'erreur */
+                    Pays = me.Pays,
                 };
             }
             else
@@ -240,25 +240,7 @@ namespace HomeShare.Repositories
               return Last5ForCtrl;*/
         
 
-        // inserer un nouveau bien dans la db
-        public bool CreateBien(BienModel bm)
-        {
-            BienEntity be = new BienEntity
-            {
-                Titre = bm.Titre,
-                DescCourte = bm.DescCourte,
-                DescLong = bm.DescLong,
-                Numero = bm.Numero,
-                Rue = bm.Rue,
-                CodePostal = bm.CodePostal,
-                Ville = bm.Ville,
-                Pays = bm.Pays,
-                NombrePerson = bm.NombrePerson,
-                NbrSBD = bm.NbrSBD,
-                NbrWC = bm.NbrWC,
-            };
-            return _bienRepo.Insert(be);
-        }
+        
 
         // envoyer la liste de pays pour le select du fomrulaire Ajouter un Bien
         public List<PaysModel> GetAllPays()
@@ -273,20 +255,102 @@ namespace HomeShare.Repositories
                 }
                 ).ToList();
         }
-        
-            //version foreach
-            /*List<PaysEntity> ListePaysFromDB = _paysRepo.Get();
-                List<PaysModel> ListePaysForCtrl = new List<PaysModel>();
 
-                foreach (PaysEntity pe in ListePaysFromDB)
+        //version foreach
+        /*List<PaysEntity> ListePaysFromDB = _paysRepo.Get();
+            List<PaysModel> ListePaysForCtrl = new List<PaysModel>();
+
+            foreach (PaysEntity pe in ListePaysFromDB)
+            {
+                PaysModel pm = new PaysModel();
+                pm.IdPays = pe.IdPays;
+                pm.NomPays = pe.Libelle;
+                ListePaysForCtrl.Add(pm);
+            } 
+            return ListePaysForCtrl;*/
+
+
+        // ajouter un bien
+        public bool AddBien(AjoutBienModel abm)
+        {
+            MembreModel owner = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
+            AjoutBienEntity abe = new AjoutBienEntity();
+                //mapping partie Bien
+                abe.Titre = abm.Titre;
+                abe.DescCourte = abm.DescCourte;
+                abe.DescLong = abm.DescLong;
+                abe.Numero = abm.Numero;
+                abe.Rue = abm.Rue;
+                abe.CodePostal = abm.CodePostal;
+                abe.Ville = abm.Ville;
+                abe.Pays = abm.Pays;
+                abe.NombrePerson = abm.NombrePerson;
+                abe.NbrSBD = abm.NbrSBD;
+                abe.NbrWC = abm.NbrWC;
+                abe.IdMembre = owner.IdMembre;
+                if (abm.Latitude is null)
                 {
-                    PaysModel pm = new PaysModel();
-                    pm.IdPays = pe.IdPays;
-                    pm.NomPays = pe.Libelle;
-                    ListePaysForCtrl.Add(pm);
-                } 
-                return ListePaysForCtrl;*/
+                    abe.Latitude = "000000000";
+                }
+                else { abe.Latitude = abm.Latitude; }
 
+                if (abm.Longitude is null)
+                {
+                    abe.Longitude = "000000000";
+                }
+                else { abe.Longitude = abm.Longitude; }
+
+                if (abm.Photo is null)
+                {
+                    abe.Photo = "pas de photo disponible";
+                }
+                else { abe.Photo = abm.Photo; }
+
+
+            //mapping partie OptionBien
+                
+            foreach (IdOptionModel item in abm.ListeIdOption)
+                {
+                    OptionBienEntity obe = new OptionBienEntity();
+                    obe.IdBien = 0;
+                    obe.IdOption = item.IdOption;
+                    obe.Valeur = true;
+                    abe.ListeOptionBien.Add(obe);
+                }
+
+            return _ajoutBienRepo.Insert(abe);
+        }
+
+        // version quand je recup 2 model pour l'ajout d'un bien mais trop confut pour la partie Repo après
+        /*MembreModel owner = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
+
+            List<OptionEntity> liste_oe = new List<OptionEntity>();
+            foreach (OptionModel om in liste_om)
+            {
+                OptionEntity oe = new OptionEntity();
+                oe.IdOption = om.IdOption;
+                oe.Libelle = om.Libelle;
+                liste_oe.Add(oe);
+            }
+
+            AjoutBienEntity abe = new AjoutBienEntity
+            {
+                Titre = bm.Titre,
+                DescCourte = bm.DescCourte,
+                DescLong = bm.DescLong,
+                Numero = bm.Numero,
+                Rue = bm.Rue,
+                CodePostal = bm.CodePostal,
+                Ville = bm.Ville,
+                Pays = bm.Pays,
+                NombrePerson = bm.NombrePerson,
+                NbrSBD = bm.NbrSBD,
+                NbrWC = bm.NbrWC,
+                IdMembre = owner.IdMembre,
+                ListeOptions = liste_oe, // ceci pose problème au niveau du post du formulaire
+            };
+
+            return _ajoutBienRepo.Insert(abe);*/
 
         // modifier un bien
         public bool UpdateBien(BienModel bm)

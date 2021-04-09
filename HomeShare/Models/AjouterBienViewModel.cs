@@ -13,6 +13,7 @@ namespace HomeShare.Models
 
         private BienModel _newBien;
         private List<PaysModel> _listePays;
+        private List<OptionModel> _listeOption;
         #endregion
 
         #region Ctor
@@ -21,6 +22,8 @@ namespace HomeShare.Models
         public AjouterBienViewModel()
         {
             ListePays = uow.GetAllPays();
+            ListeOption = uow.GetAllOption();
+            
         }
         #endregion
 
@@ -49,6 +52,19 @@ namespace HomeShare.Models
             set
             {
                 _listePays = value;
+            }
+        }
+
+        public List<OptionModel> ListeOption
+        {
+            get
+            {
+                return _listeOption;
+            }
+
+            set
+            {
+                _listeOption = value;
             }
         }
         #endregion

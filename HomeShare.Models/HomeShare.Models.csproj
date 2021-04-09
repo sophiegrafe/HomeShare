@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BienModel.cs" />
+    <Compile Include="IdOptionModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="MembreInfosModel.cs" />
+    <Compile Include="AjoutBienModel.cs" />
     <Compile Include="OptionModel.cs" />
     <Compile Include="PaysModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
