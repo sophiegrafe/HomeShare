@@ -150,6 +150,43 @@ namespace HomeShare.DAL.Repositories
 
 
         }
+        /*=================================================================================*/
+        /*=================================================================================*/
+        /*=================================================================================*/
+        /*=================================================================================*/
+        protected bool InsertDico(string requete, Dictionary<string, object> parametres)
+        {
+            if (Connect())
+            {
+                
+                SqlCommand oCmd = new SqlCommand(requete, connection);
+                
+                foreach (var item in parametres)
+                {
+                    oCmd.Parameters.Add(new SqlParameter(item.Key, item.Value));
+                }
+
+                bool isInserted = false;
+                try
+                {
+                    int info = oCmd.ExecuteNonQuery();
+                    isInserted = true;
+                }
+                catch (Exception ex)
+                {
+
+                    isInserted = false;
+                }
+                
+                Disconnect();
+                
+                return isInserted;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         protected bool Update(T toUPdate, string updateRequete)
         {

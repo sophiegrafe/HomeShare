@@ -13,9 +13,12 @@ namespace HomeShare.Entities
         private string _titre, _descCourte, _descLong, _ville, _rue, _numero, _codePostal, _photo, _latitude, _longitude;
         private bool _assuranceObligatoire, _isEnabled;
         private DateTime? _disabledDate;
-        private DateTime _dateCreation;
+        
 
-        private List<OptionBienEntity> _listeOptionBien;
+        //private string optionsString;
+
+        private List<OptionEntity> _listeOption;
+        //private List<OptionBienEntity> _listeOptionBien;
 
         #region Properties
         public int IdBien
@@ -265,31 +268,46 @@ namespace HomeShare.Entities
             }
         }
 
-        public DateTime DateCreation
+
+
+        //public List<OptionBienEntity> ListeOptionBien
+        //{
+        //    get
+        //    {
+        //        return _listeOptionBien;
+        //    }
+
+        //    set
+        //    {
+        //        _listeOptionBien = value;
+        //    }
+        //}
+
+        public List<OptionEntity> ListeOption
         {
             get
             {
-                return _dateCreation;
+                return _listeOption;
             }
 
             set
             {
-                _dateCreation = value;
-            }
-        }       
-
-        public List<OptionBienEntity> ListeOptionBien
-        {
-            get
-            {
-                return _listeOptionBien;
-            }
-
-            set
-            {
-                _listeOptionBien = value;
+                _listeOption = value;
             }
         }
+
+        //public string OptionsString
+        //{
+        //    get
+        //    {
+        //        return optionsString;
+        //    }
+
+        //    set
+        //    {
+        //        optionsString = value;
+        //    }
+        //}
         #endregion
         #endregion
     }

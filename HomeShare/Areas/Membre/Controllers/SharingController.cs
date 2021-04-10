@@ -24,29 +24,58 @@ namespace HomeShare.Areas.Membre.Controllers
         }
 
         [HttpPost]
-        public ActionResult AjouterBien(AjoutBienModel abm)
+        
+        public ActionResult AjouterBien(FormCollection form, AjouterBienViewModel abvm)
         {
-            if (ModelState.IsValid)
+            AjoutBienModel abm = new AjoutBienModel();
+            abm.Titre = form["NewBien.Titre"].ToString();
+            abm.DescCourte = form["NewBien.DescCourte"].ToString();
+            abm.DescLong = form["NewBien.DescLong"].ToString();
+            abm.Pays = int.Parse(form["Pays"].ToString());
+            abm.Ville = form["NewBien.Ville"].ToString();
+            abm.Rue = form["NewBien.Rue"].ToString();
+            abm.Numero = form["NewBien.Numero"].ToString();
+            abm.CodePostal = form["NewBien.CodePostal"].ToString();
+            abm.Photo = form["NewBien.Photo"].ToString();
+            abm.NombrePerson = int.Parse(form["NewBien.NombrePerson"].ToString());
+            abm.NbrSBD = int.Parse(form["NewBien.NbrSBD"].ToString());
+            abm.NbrWC = int.Parse(form["NewBien.NbrWC"].ToString());
+
+
+            string assuranceObligatoire = form["NewBien.AssuranceObligatoire"];
+            if (assuranceObligatoire == "true,false")
             {
-                UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
+                abm.AssuranceObligatoire = true;
+            }
+            else { abm.AssuranceObligatoire = false; }
 
-                if (uow.AddBien(abm))
+            abm.ListeIdOption = new List<OptionModel>();
+
+            foreach (OptionModel item in abvm.ListeOption)
+            {
+                if (form.AllKeys.Contains(item.Libelle))
                 {
-
-                    return RedirectToAction("Index", "Home", new { area = "Membre" });
-
+                    OptionModel option = new OptionModel();
+                    option.IdOption = item.IdOption;
+                    option.Libelle = item.Libelle;
+                    abm.ListeIdOption.Add(option);
                 }
-                else
-                {
-                    return RedirectToAction("AjouterBien", "Home", new { area = "Membre" });
-                }
+            }
+
+            
+
+            UnitOfWork uow = new UnitOfWork(ConfigurationManager.ConnectionStrings["Cnstr"].ConnectionString);
+
+            if (uow.AddBien(abm))
+            {
+
+                return RedirectToAction("Index", "Home", new { area = "Membre" });
+
             }
             else
             {
-                ViewBag.Error = "Quelque chose n'a pas fonctionné ...";
-                return View();
+                return RedirectToAction("AjouterBien", "Home", new { area = "Membre" });
             }
-            
         }
     }
 }

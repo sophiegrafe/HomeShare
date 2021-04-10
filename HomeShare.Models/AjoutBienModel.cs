@@ -13,9 +13,8 @@ namespace HomeShare.Models
         private string _titre, _descCourte, _descLong, _ville, _rue, _numero, _codePostal, _photo, _latitude, _longitude;
         private bool _assuranceObligatoire, _isEnabled;
         private DateTime? _disabledDate;
-
-        private IdOptionModel _idOption;
-        private List<IdOptionModel> _listeIdOption;
+        
+        private List<OptionModel> _listeIdOption;
         #endregion
 
         #region Properties
@@ -266,7 +265,7 @@ namespace HomeShare.Models
             }
         }
 
-        public List<IdOptionModel> ListeIdOption
+        public List<OptionModel> ListeIdOption
         {
             get
             {
@@ -278,21 +277,6 @@ namespace HomeShare.Models
                 _listeIdOption = value;
             }
         }
-
-        public IdOptionModel IdOption
-        {
-            get
-            {
-                return _idOption;
-            }
-
-            set
-            {
-                _idOption = value;
-            }
-        }
-
-
         #endregion
 
     }

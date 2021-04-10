@@ -60,6 +60,8 @@ namespace HomeShare.Repositories
             return Insert(toInsert, requete);
         }
 
+       
+
         public bool Update(MembreEntity toUpdate)
         {
             string requete = $"UPDATE Membre SET Nom = '{toUpdate.Nom}'" +
@@ -69,7 +71,15 @@ namespace HomeShare.Repositories
                                              $", Pays = '{ toUpdate.Pays }' " +
                              $"WHERE idMembre = {toUpdate.IdMembre}";
             return Update(new MembreEntity(), requete);
-        } 
+        }
         #endregion
+
+
+
+
+        public bool InsertBienDB(AjoutBienEntity abe)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

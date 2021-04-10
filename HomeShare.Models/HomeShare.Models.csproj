@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BienModel.cs" />
-    <Compile Include="IdOptionModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="MembreInfosModel.cs" />
     <Compile Include="AjoutBienModel.cs" />

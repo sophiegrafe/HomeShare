@@ -20,7 +20,7 @@
             <div class="col-lg-8 col-sm-8">
                 @*@using (Html.BeginForm())
                 {*@
-                    @Html.AntiForgeryToken()
+                    @*@Html.AntiForgeryToken()*@
                     <form action="~/Membre/Sharing/AjouterBien" method="post">
                         <div class="form-horizontal">
 
@@ -144,7 +144,7 @@
                                 {
                                     <div class="flex-inline">
                                         <label>@option.Libelle</label>
-                                        <input type="checkbox" name="@option.IdOption" value="@option.IdOption">
+                                        <input type="checkbox" name="@option.Libelle" value="@option.IdOption">
                                     </div>
                                 }
                             </div>

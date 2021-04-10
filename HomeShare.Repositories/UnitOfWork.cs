@@ -275,82 +275,48 @@ namespace HomeShare.Repositories
         {
             MembreModel owner = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
             AjoutBienEntity abe = new AjoutBienEntity();
-                //mapping partie Bien
-                abe.Titre = abm.Titre;
-                abe.DescCourte = abm.DescCourte;
-                abe.DescLong = abm.DescLong;
-                abe.Numero = abm.Numero;
-                abe.Rue = abm.Rue;
-                abe.CodePostal = abm.CodePostal;
-                abe.Ville = abm.Ville;
-                abe.Pays = abm.Pays;
-                abe.NombrePerson = abm.NombrePerson;
-                abe.NbrSBD = abm.NbrSBD;
-                abe.NbrWC = abm.NbrWC;
-                abe.IdMembre = owner.IdMembre;
-                if (abm.Latitude is null)
-                {
-                    abe.Latitude = "000000000";
-                }
-                else { abe.Latitude = abm.Latitude; }
+            //mapping partie Bien
+            abe.Titre = abm.Titre;
+            abe.DescCourte = abm.DescCourte;
+            abe.DescLong = abm.DescLong;
+            abe.Numero = abm.Numero;
+            abe.Rue = abm.Rue;
+            abe.CodePostal = abm.CodePostal;
+            abe.Ville = abm.Ville;
+            abe.Pays = abm.Pays;
+            abe.NombrePerson = abm.NombrePerson;
+            abe.NbrSBD = abm.NbrSBD;
+            abe.NbrWC = abm.NbrWC;
+            abe.IdMembre = owner.IdMembre;
+            if (abm.Latitude is null)
+            {
+                abe.Latitude = "000000000";
+            }
+            else { abe.Latitude = abm.Latitude; }
 
-                if (abm.Longitude is null)
-                {
-                    abe.Longitude = "000000000";
-                }
-                else { abe.Longitude = abm.Longitude; }
+            if (abm.Longitude is null)
+            {
+                abe.Longitude = "000000000";
+            }
+            else { abe.Longitude = abm.Longitude; }
 
-                if (abm.Photo is null)
-                {
-                    abe.Photo = "pas de photo disponible";
-                }
-                else { abe.Photo = abm.Photo; }
-
+            if (abm.Photo is null)
+            {
+                abe.Photo = "pas de photo disponible";
+            }
+            else { abe.Photo = abm.Photo; }
 
             //mapping partie OptionBien
-                
-            foreach (IdOptionModel item in abm.ListeIdOption)
-                {
-                    OptionBienEntity obe = new OptionBienEntity();
-                    obe.IdBien = 0;
-                    obe.IdOption = item.IdOption;
-                    obe.Valeur = true;
-                    abe.ListeOptionBien.Add(obe);
-                }
-
-            return _ajoutBienRepo.Insert(abe);
-        }
-
-        // version quand je recup 2 model pour l'ajout d'un bien mais trop confut pour la partie Repo après
-        /*MembreModel owner = (MembreModel)HttpContext.Current.Session["ConnectedUser"];
-
-            List<OptionEntity> liste_oe = new List<OptionEntity>();
-            foreach (OptionModel om in liste_om)
+            abe.ListeOption = new List<OptionEntity>();
+            foreach (OptionModel item in abm.ListeIdOption)
             {
-                OptionEntity oe = new OptionEntity();
-                oe.IdOption = om.IdOption;
-                oe.Libelle = om.Libelle;
-                liste_oe.Add(oe);
+                OptionEntity option = new OptionEntity();
+                option.IdOption = item.IdOption;
+                option.Libelle = item.Libelle;
+                abe.ListeOption.Add(option);
             }
-
-            AjoutBienEntity abe = new AjoutBienEntity
-            {
-                Titre = bm.Titre,
-                DescCourte = bm.DescCourte,
-                DescLong = bm.DescLong,
-                Numero = bm.Numero,
-                Rue = bm.Rue,
-                CodePostal = bm.CodePostal,
-                Ville = bm.Ville,
-                Pays = bm.Pays,
-                NombrePerson = bm.NombrePerson,
-                NbrSBD = bm.NbrSBD,
-                NbrWC = bm.NbrWC,
-                IdMembre = owner.IdMembre,
-                ListeOptions = liste_oe, // ceci pose problème au niveau du post du formulaire
-            };
-
-            return _ajoutBienRepo.Insert(abe);*/
+            return _ajoutBienRepo.InsertBienDB(abe);
+        }
 
         // modifier un bien
         public bool UpdateBien(BienModel bm)

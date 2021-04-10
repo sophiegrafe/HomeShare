@@ -25,10 +25,25 @@ namespace HomeShare.Repositories
             throw new NotImplementedException();
         }
 
+        public bool Update(AjoutBienEntity toUpdate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(AjoutBienEntity toDelete)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Insert(AjoutBienEntity toInsert)
-        {   
-            
-            string requete = @"EXEC [dbo].[sp_Bien_Insert] 
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public bool InsertBienDB(AjoutBienEntity abe)
+        {
+            string requete = $@"EXEC [dbo].[sp_Bien_Insert] 
              @titre
             ,@descCourte
             ,@descLong
@@ -44,20 +59,37 @@ namespace HomeShare.Repositories
             ,@latitude
             ,@longitude
             ,@photo";
-            // ajouter le traitement des options ici mais pour l'instant c'est le casse tete 
 
-            return Insert(toInsert, requete);
+            foreach (OptionEntity option in abe.ListeOption)
+            {
+                requete += $",@{option.Libelle.Trim()}";
+            }
+
+            Dictionary<string, object> parametre = new Dictionary<string, object>();
+            foreach (OptionEntity option in abe.ListeOption)
+            {
+                parametre.Add(option.Libelle, option.IdOption);
+            }
+            //mapping abe --> dico
+            parametre.Add("titre", abe.Titre);
+            parametre.Add("descCourte", abe.DescCourte);
+            parametre.Add("descLong", abe.DescLong);
+            parametre.Add("numero", abe.Numero);
+            parametre.Add("rue", abe.Rue);
+            parametre.Add("codePostal", abe.CodePostal);
+            parametre.Add("ville", abe.Ville);
+            parametre.Add("pays", abe.Pays);
+            parametre.Add("nombrePerson", abe.NombrePerson);
+            parametre.Add("nbrSBD", abe.NbrSBD);
+            parametre.Add("nbrWC", abe.NbrWC);
+            parametre.Add("idMembre", abe.IdMembre);
+            parametre.Add("latitude", abe.Latitude);
+            parametre.Add("longitude", abe.Longitude);
+            parametre.Add("photo", abe.Photo);
+
+
+            return InsertDico(requete, parametre);
+            
         }
-
-        public bool Update(AjoutBienEntity toUpdate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(AjoutBienEntity toDelete)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
