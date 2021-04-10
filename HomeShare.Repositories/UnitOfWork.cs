@@ -306,7 +306,9 @@ namespace HomeShare.Repositories
             }
             else { abe.Photo = abm.Photo; }
 
-            //mapping partie OptionBien
+
+            //je traiterai le option plus tard 
+            /*//mapping partie OptionBien
             abe.ListeOption = new List<OptionEntity>();
             foreach (OptionModel item in abm.ListeIdOption)
             {
@@ -314,7 +316,7 @@ namespace HomeShare.Repositories
                 option.IdOption = item.IdOption;
                 option.Libelle = item.Libelle;
                 abe.ListeOption.Add(option);
-            }
+            }*/
             return _ajoutBienRepo.Insert(abe);
         }
 

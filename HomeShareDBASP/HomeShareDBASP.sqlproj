@@ -84,8 +84,6 @@
     <Build Include="dbo\Views\Vue_GetRandom.sql" />
     <Build Include="dbo\Stored Procedures\sp_Membre_Insert.sql" />
     <Build Include="dbo\Stored Procedures\sp_Verification_Login.sql" />
-    <Build Include="dbo\Stored Procedures\_sp_Bien_Insert.sql" />
     <Build Include="dbo\Stored Procedures\sp_Bien_Insert.sql" />
-    <Build Include="dbo\Functions\fct_intList_to_tbl.sql" />
   </ItemGroup>
 </Project>

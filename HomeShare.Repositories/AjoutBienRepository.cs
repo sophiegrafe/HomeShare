@@ -55,8 +55,8 @@ namespace HomeShare.Repositories
             ,@longitude
             ,@photo";
 
-            return Insert(requete, toInsert);
-
+            return Insert(toInsert, requete);
+        }
             // version avec utilisation d'un dico pour envoyer les options + le bien dans ps insert bien
             // ça ne passe pas vers la ps après le passage (sans erreur) dans BaseRepo 
             // --> Message d'erreur : -- erreur de syntaxe proche de 'int', '@tittre' scalar fnction doit être déclaré --???????
@@ -103,6 +103,6 @@ namespace HomeShare.Repositories
                 return Insert(requete, parametre); //, toInsert
                 //return Insert(requete, parametre);  */
 
-        }
+     
     }
 }
