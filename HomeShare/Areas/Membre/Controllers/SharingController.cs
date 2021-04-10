@@ -74,7 +74,7 @@ namespace HomeShare.Areas.Membre.Controllers
             }
             else
             {
-                return RedirectToAction("AjouterBien", "Home", new { area = "Membre" });
+                return RedirectToAction("AjouterBien", "Sharing", new { area = "Membre" });
             }
         }
     }

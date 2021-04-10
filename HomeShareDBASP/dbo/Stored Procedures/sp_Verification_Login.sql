@@ -11,7 +11,7 @@ AS
 	
 	IF (@newPassword = @hPassword)
 	BEGIN 		
-	SELECT [Login], Nom, Prenom, Email, Telephone, Pays, IdMembre
+	SELECT [Login], Nom, Prenom, Email, IdMembre
 	FROM Membre 
 	
 	END 

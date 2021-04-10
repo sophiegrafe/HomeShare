@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[OptionsBien] (
-    [IdOption] INT           NOT NULL,
-    [IdBien]   INT           NOT NULL,
+    [idOption] INT           NOT NULL,
+    [idBien]   INT           NOT NULL,
     [Valeur]   NVARCHAR (50) NOT NULL,
-    CONSTRAINT [PK_OptionsBien] PRIMARY KEY CLUSTERED ([IdOption] ASC, [IdBien] ASC),
-    CONSTRAINT [FK_OptionsBien_BienEchange] FOREIGN KEY ([IdBien]) REFERENCES [dbo].[BienEchange] ([IdBien]),
-    CONSTRAINT [FK_OptionsBien_Options] FOREIGN KEY ([IdOption]) REFERENCES [dbo].[Options] ([IdOption])
+    CONSTRAINT [PK_OptionsBien] PRIMARY KEY CLUSTERED ([idOption] ASC, [idBien] ASC),
+    CONSTRAINT [FK_OptionsBien_BienEchange] FOREIGN KEY ([idBien]) REFERENCES [dbo].[BienEchange] ([idBien]),
+    CONSTRAINT [FK_OptionsBien_Options] FOREIGN KEY ([idOption]) REFERENCES [dbo].[Options] ([idOption])
 );
 

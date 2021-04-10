@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[BienEchange] (
-    [IdBien]               INT            IDENTITY (1, 1) NOT NULL,
-    [Titre]                NVARCHAR (50)  NOT NULL,
+    [idBien]               INT            IDENTITY (1, 1) NOT NULL,
+    [titre]                NVARCHAR (50)  NOT NULL,
     [DescCourte]           NVARCHAR (150) NOT NULL,
     [DescLong]             NTEXT          NOT NULL,
     [NombrePerson]         INT            NOT NULL,
-    [NbrSDB]               INT            NOT NULL,
-    [NbrWC]                INT            NOT NULL,
+    [NbrSDB]               INT            NULL,
+    [NbrWC]                INT            NULL,
     [Pays]                 INT            CONSTRAINT [DF_BienEchange_Pays] DEFAULT ((1)) NOT NULL,
     [Ville]                NVARCHAR (50)  NOT NULL,
     [Rue]                  NVARCHAR (50)  NOT NULL,
@@ -18,9 +18,9 @@
     [Latitude]             NVARCHAR (50)  NOT NULL,
     [Longitude]            NVARCHAR (50)  NOT NULL,
     [DateCreation]         DATE           CONSTRAINT [DF_BienEchange_DateCreation] DEFAULT (getdate()) NOT NULL,
-    [IdMembre]             INT            NOT NULL,
-    CONSTRAINT [PK_BienEchange] PRIMARY KEY CLUSTERED ([IdBien] ASC),
-    CONSTRAINT [FK_BienEchange_membre] FOREIGN KEY ([IdMembre]) REFERENCES [dbo].[Membre] ([IdMembre]),
-    CONSTRAINT [FK_BienEchange_Pays] FOREIGN KEY ([Pays]) REFERENCES [dbo].[Pays] ([IdPays])
+    [idMembre]             INT            NOT NULL,
+    CONSTRAINT [PK_BienEchange] PRIMARY KEY CLUSTERED ([idBien] ASC),
+    CONSTRAINT [FK_BienEchange_membre] FOREIGN KEY ([idMembre]) REFERENCES [dbo].[Membre] ([idMembre]),
+    CONSTRAINT [FK_BienEchange_Pays] FOREIGN KEY ([Pays]) REFERENCES [dbo].[Pays] ([idPays])
 );
 

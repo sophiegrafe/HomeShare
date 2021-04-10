@@ -63,6 +63,7 @@
     <Folder Include="dbo\Views\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\Scalar-valued Functions" />
+    <Folder Include="dbo\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Options.sql" />
@@ -83,5 +84,8 @@
     <Build Include="dbo\Views\Vue_GetRandom.sql" />
     <Build Include="dbo\Stored Procedures\sp_Membre_Insert.sql" />
     <Build Include="dbo\Stored Procedures\sp_Verification_Login.sql" />
+    <Build Include="dbo\Stored Procedures\_sp_Bien_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Bien_Insert.sql" />
+    <Build Include="dbo\Functions\fct_intList_to_tbl.sql" />
   </ItemGroup>
 </Project>

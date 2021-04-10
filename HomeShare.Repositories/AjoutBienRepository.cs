@@ -35,9 +35,10 @@ namespace HomeShare.Repositories
             throw new NotImplementedException();
         }
 
-        public bool Insert(AjoutBienEntity abe)
+        public bool Insert(AjoutBienEntity toInsert)
         {
-            string requete = $@"EXEC [dbo].[sp_Bien_Insert] 
+
+            string requete = $@"EXEC [dbo].[sp_Bien_Insert]  
              @titre
             ,@descCourte
             ,@descLong
@@ -53,37 +54,48 @@ namespace HomeShare.Repositories
             ,@latitude
             ,@longitude
             ,@photo";
+            //,@tVPOption";
 
-            foreach (OptionEntity option in abe.ListeOption)
+            //si TVPOfOption dispo alors je commente ceci
+            //générer autant de @param pour la requete qu'il y a d'option cochées 
+            foreach (OptionEntity option in toInsert.ListeOption)
             {
-                requete += $",@{option.Libelle.Trim()}";
+                string libelle = option.Libelle;
+                string libellePrDB = libelle.Replace(" ", "_");
+                requete += $",@{libellePrDB}";
             }
 
+            //créer un dicotionnaire pour récupérer ttes les données sous forme de clés-valeur 
             Dictionary<string, object> parametre = new Dictionary<string, object>();
-            foreach (OptionEntity option in abe.ListeOption)
+
+            //insérer les options et leur id dans le dico
+            foreach (OptionEntity option in toInsert.ListeOption)
             {
                 parametre.Add(option.Libelle, option.IdOption);
             }
-            //mapping abe --> dico
-            parametre.Add("titre", abe.Titre);
-            parametre.Add("descCourte", abe.DescCourte);
-            parametre.Add("descLong", abe.DescLong);
-            parametre.Add("numero", abe.Numero);
-            parametre.Add("rue", abe.Rue);
-            parametre.Add("codePostal", abe.CodePostal);
-            parametre.Add("ville", abe.Ville);
-            parametre.Add("pays", abe.Pays);
-            parametre.Add("nombrePerson", abe.NombrePerson);
-            parametre.Add("nbrSBD", abe.NbrSBD);
-            parametre.Add("nbrWC", abe.NbrWC);
-            parametre.Add("idMembre", abe.IdMembre);
-            parametre.Add("latitude", abe.Latitude);
-            parametre.Add("longitude", abe.Longitude);
-            parametre.Add("photo", abe.Photo);
 
+            // si TVPOfOption dispo alors je commente ceci:
+            //injecter l'objet toInsert dans le dico
+            parametre.Add("titre", toInsert.Titre);
+            parametre.Add("descCourte", toInsert.DescCourte);
+            parametre.Add("descLong", toInsert.DescLong);
+            parametre.Add("numero", toInsert.Numero);
+            parametre.Add("rue", toInsert.Rue);
+            parametre.Add("codePostal", toInsert.CodePostal);
+            parametre.Add("ville", toInsert.Ville);
+            parametre.Add("pays", toInsert.Pays);
+            parametre.Add("nombrePerson", toInsert.NombrePerson);
+            parametre.Add("nbrSBD", toInsert.NbrSBD);
+            parametre.Add("nbrWC", toInsert.NbrWC);
+            parametre.Add("idMembre", toInsert.IdMembre);
+            parametre.Add("latitude", toInsert.Latitude);
+            parametre.Add("longitude", toInsert.Longitude);
+            parametre.Add("photo", toInsert.Photo);
 
-            return Insert(requete, parametre);
-            
+            // si TVPOfOption
+            return Insert(requete, parametre); //, toInsert
+            //return Insert(requete, parametre);
+
         }
     }
 }
