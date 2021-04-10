@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[MembreBienEchange] (
-    [idMembre]       INT  NOT NULL,
-    [idBien]         INT  NOT NULL,
+    [IdMembre]       INT  NOT NULL,
+    [IdBien]         INT  NOT NULL,
     [DateDebEchange] DATE NOT NULL,
     [DateFinEchange] DATE NOT NULL,
     [Assurance]      BIT  NULL,
