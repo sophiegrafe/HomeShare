@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="AjoutBienRepository.cs" />
     <Compile Include="BienRepository.cs" />
-    <Compile Include="IconcreteRepository.cs" />
     <Compile Include="MembreRepository.cs" />
     <Compile Include="OptionRepository.cs" />
     <Compile Include="PaysRepository.cs" />

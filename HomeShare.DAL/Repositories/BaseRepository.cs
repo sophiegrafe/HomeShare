@@ -152,9 +152,9 @@ namespace HomeShare.DAL.Repositories
         }
         /*=================================================================================*/
         /*=================================================================================*/
-        /*=================================================================================*/
-        /*=================================================================================*/
-        protected bool InsertDico(string requete, Dictionary<string, object> parametres)
+        /*======METHODE POUR INSERER LE BIEN ET LES OPTIONS A PARTIR D4UN DICTIONNAIRE ====*/
+        /*================================ PAS FINIE ======================================*/
+        protected bool Insert(string requete, Dictionary<string, object> parametres)
         {
             if (Connect())
             {
@@ -187,6 +187,9 @@ namespace HomeShare.DAL.Repositories
                 return false;
             }
         }
+
+        /*=================================================================================*/
+        /*=================================================================================*/
 
         protected bool Update(T toUPdate, string updateRequete)
         {

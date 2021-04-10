@@ -315,7 +315,7 @@ namespace HomeShare.Repositories
                 option.Libelle = item.Libelle;
                 abe.ListeOption.Add(option);
             }
-            return _ajoutBienRepo.InsertBienDB(abe);
+            return _ajoutBienRepo.Insert(abe);
         }
 
         // modifier un bien

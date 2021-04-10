@@ -14,6 +14,5 @@ namespace HomeShare.DAL.Repositories
         List<T> Get();
 
         T GetOne(int PK);
-        bool InsertBienDB(HomeShare.Entities.AjoutBienEntity abe);
     }
 }

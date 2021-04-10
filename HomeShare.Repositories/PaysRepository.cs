@@ -41,7 +41,7 @@ namespace HomeShare.Repositories
         public bool Delete(PaysEntity toDelete)
         {
             throw new NotImplementedException();
-        } 
+        }
         #endregion
     }
 }

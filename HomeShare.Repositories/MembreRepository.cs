@@ -73,13 +73,5 @@ namespace HomeShare.Repositories
             return Update(new MembreEntity(), requete);
         }
         #endregion
-
-
-
-
-        public bool InsertBienDB(AjoutBienEntity abe)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

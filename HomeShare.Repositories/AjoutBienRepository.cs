@@ -35,13 +35,7 @@ namespace HomeShare.Repositories
             throw new NotImplementedException();
         }
 
-        public bool Insert(AjoutBienEntity toInsert)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public bool InsertBienDB(AjoutBienEntity abe)
+        public bool Insert(AjoutBienEntity abe)
         {
             string requete = $@"EXEC [dbo].[sp_Bien_Insert] 
              @titre
@@ -88,7 +82,7 @@ namespace HomeShare.Repositories
             parametre.Add("photo", abe.Photo);
 
 
-            return InsertDico(requete, parametre);
+            return Insert(requete, parametre);
             
         }
     }
