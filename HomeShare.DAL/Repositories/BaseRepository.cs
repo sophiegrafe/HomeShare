@@ -154,17 +154,16 @@ namespace HomeShare.DAL.Repositories
         /*=================================================================================*/
         /*======METHODE POUR INSERER LE BIEN ET LES OPTIONS A PARTIR D4UN DICTIONNAIRE ====*/
         /*================================ PAS FINIE ======================================*/
-        protected bool Insert(string requete, Dictionary<string, object> parametres)
+
+        protected bool Insert(string requete, Dictionary<string, object> dicoParametres)
         {
             if (Connect())
             {
-                
+
                 SqlCommand oCmd = new SqlCommand(requete, connection);
-                
-                foreach (var item in parametres)
-                {
-                    oCmd.Parameters.Add(new SqlParameter(item.Key, item.Value));
-                }
+
+                oCmd.Parameters.AddRange(MapDicoToSqlParameter(dicoParametres));
+
 
                 bool isInserted = false;
                 try
@@ -177,9 +176,9 @@ namespace HomeShare.DAL.Repositories
 
                     isInserted = false;
                 }
-                
+
                 Disconnect();
-                
+
                 return isInserted;
             }
             else
@@ -187,11 +186,10 @@ namespace HomeShare.DAL.Repositories
                 return false;
             }
         }
+            /*=================================================================================*/
+            /*=================================================================================*/
 
-        /*=================================================================================*/
-        /*=================================================================================*/
-
-        protected bool Update(T toUPdate, string updateRequete)
+            protected bool Update(T toUPdate, string updateRequete)
         {
 
             if (Connect())
@@ -378,6 +376,22 @@ namespace HomeShare.DAL.Repositories
                 //Exemple :
                 //  param.SqlDbType= System.Data.SqlDbType.NVarChar ~= string ==> Dépend du type de la propriété
                 //  param.Size = 50;
+                parametres.Add(param);
+            }
+
+            return parametres.ToArray();
+        }
+
+
+
+        //methode ajoutée pour essayer d'envoyer une liste de param dans la DB à partir d'un dictionnaire
+        private SqlParameter[] MapDicoToSqlParameter(Dictionary<string, object> DicotoMap)
+        {
+            List<SqlParameter> parametres = new List<SqlParameter>();
+
+            foreach (var item in DicotoMap)
+            {
+                SqlParameter param = new SqlParameter(item.Key, item.Value);
                 parametres.Add(param);
             }
 
