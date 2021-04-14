@@ -57,13 +57,14 @@ namespace HomeShare.Repositories
 
             return Insert(toInsert, requete);
         }
-            // version avec utilisation d'un dico pour envoyer les options + le bien dans ps insert bien
+            // version avec surcharge de la méthode Insert dans le BaseRepo, utilisation d'un dico pour envoyer les options + le bien dans ps insert bien
             // ça ne passe pas vers la ps après le passage (sans erreur) dans BaseRepo 
-            // --> Message d'erreur : -- erreur de syntaxe proche de 'int', '@tittre' scalar fnction doit être déclaré --???????
+            // --> Message d'erreur : -- erreur de syntaxe proche de 'int', '@titre' scalar function doit être déclaré --???????
 
             /*  //,@tVPOption";
 
-                //si TVPOfOption dispo alors je commente ceci
+                //si TVPOfOption dispo alors je commente ceci:
+
                 //générer autant de @param pour la requete qu'il y a d'option cochées 
                 foreach (OptionEntity option in toInsert.ListeOption)
                 {
@@ -72,7 +73,7 @@ namespace HomeShare.Repositories
                     requete += $",@{libellePrDB}";
                 }
 
-                //créer un dicotionnaire pour récupérer ttes les données sous forme de clés-valeur 
+                //créer un dictionnaire pour récupérer ttes les données sous forme de clés-valeur 
                 Dictionary<string, object> parametre = new Dictionary<string, object>();
 
                 //insérer les options et leur id dans le dico

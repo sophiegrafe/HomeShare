@@ -98,13 +98,9 @@ namespace HomeShare.Repositories
                 {
                     me.Telephone = membreToUpdate.Telephone;
                 }
-                else { me.Telephone = mim.Telephone; }
-           
-                if (mim.Pays == null)
-                {
-                    me.Pays = membreToUpdate.Pays;
-                }
-                else { me.Pays = mim.Pays; }
+                else { me.Telephone = mim.Telephone; }           
+                
+                me.Pays = mim.Pays;
 
                 me.IdMembre = membreToUpdate.IdMembre;
 
@@ -307,7 +303,7 @@ namespace HomeShare.Repositories
             else { abe.Photo = abm.Photo; }
 
 
-            //je traiterai le option plus tard 
+            //je traiterai les options plus tard 
             /*//mapping partie OptionBien
             abe.ListeOption = new List<OptionEntity>();
             foreach (OptionModel item in abm.ListeIdOption)
